@@ -1,0 +1,12 @@
+{
+  "name": "baseshugala",
+  "version": "1.0.0",
+  "description": "Bhagya Booster by BG — Boost Labh & Bhagya through Gyaan & Karma",
+  "private": true,
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
