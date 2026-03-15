@@ -1,13 +1,12 @@
-export const config = { runtime: 'edge' };
+// Vercel serverless function — /api/config
+// Returns public-safe config keys to the frontend
+// All values come from Vercel Environment Variables (never hardcoded)
 
-export default async function handler(req) {
-  return new Response(JSON.stringify({
-    razorpay_key: process.env.RAZORPAY_KEY_ID || ''
-  }), {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 's-maxage=3600'
-    }
+export default function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'no-store'); // never cache — keys may rotate
+  res.status(200).json({
+    razorpay_key: process.env.RAZORPAY_KEY_ID || '',
+    google_maps_key: process.env.GOOGLE_MAPS_KEY || '',
   });
 }
