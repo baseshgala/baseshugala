@@ -4,20 +4,20 @@ export default async function handler(req) {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
   }
-
   try {
     const { prompt, tier, stream = true } = await req.json();
 
-    const maxTokens={
-      'seeker':400,
-      'booster':600,
-      'rise':900,
-      'wise':1000,
-      'promax':1200
-    }[tier]||400;
+    // Tokens = prompt (~300) + reading output. These are OUTPUT-only limits.
+    const maxTokens = {
+      'seeker':  800,   // ~250 word reading
+      'booster': 1200,  // ~400 word reading
+      'rise':    1800,  // ~600 word reading
+      'wise':    2200,  // ~700 word reading
+      'promax':  2800   // ~900 word reading
+    }[tier] || 800;
 
     const body = {
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-5',
       max_tokens: maxTokens,
       stream: stream,
       messages: [{ role: 'user', content: prompt }]
@@ -32,6 +32,14 @@ export default async function handler(req) {
       },
       body: JSON.stringify(body)
     });
+
+    if (!res.ok) {
+      const err = await res.text();
+      return new Response(JSON.stringify({ error: err }), {
+        status: res.status,
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
 
     if (!stream) {
       const json = await res.json();
@@ -54,11 +62,16 @@ export default async function handler(req) {
           for (const line of chunk.split('\n')) {
             if (line.startsWith('data: ')) {
               const data = line.slice(6);
-              if (data === '[DONE]') { controller.enqueue(encoder.encode('data: [DONE]\n\n')); break; }
+              if (data === '[DONE]') {
+                controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+                break;
+              }
               try {
                 const json = JSON.parse(data);
                 if (json.type === 'content_block_delta') {
-                  controller.enqueue(encoder.encode(`data: ${JSON.stringify({ delta: { text: json.delta?.text || '' } })}\n\n`));
+                  controller.enqueue(encoder.encode(
+                    `data: ${JSON.stringify({ delta: { text: json.delta?.text || '' } })}\n\n`
+                  ));
                 }
               } catch (e) {}
             }
