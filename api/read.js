@@ -1,11 +1,15 @@
-export const config = { runtime: 'edge' };
+// Switch to nodejs runtime — 60s timeout vs edge 10s
+// Required for non-streaming Claude API calls which take 15-30s
+export const config = { runtime: 'nodejs', maxDuration: 60 };
 
-export default async function handler(req) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
   try {
-    const { prompt, tier } = await req.json();
+    const { prompt, tier } = req.body;
+
+    if (!prompt) return res.status(400).json({ error: 'No prompt provided' });
 
     // Non-streaming — complete text in one response, no chunk corruption
     const maxTokens = {
@@ -16,7 +20,7 @@ export default async function handler(req) {
       'promax':  6000
     }[tier] || 1500;
 
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,24 +35,17 @@ export default async function handler(req) {
       })
     });
 
-    if (!res.ok) {
-      const err = await res.text();
-      return new Response(JSON.stringify({ error: err }), {
-        status: res.status,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
+    if (!response.ok) {
+      const err = await response.text();
+      return res.status(response.status).json({ error: err });
     }
 
-    const json = await res.json();
-    const text = json.content?.[0]?.text || '';
-    return new Response(JSON.stringify({ text }), {
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
+    const data = await response.json();
+    const text = data.content?.[0]?.text || '';
+    return res.status(200).json({ text });
 
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
+    console.error('Read API error:', e);
+    return res.status(500).json({ error: e.message });
   }
 }
