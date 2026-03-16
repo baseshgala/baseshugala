@@ -12,13 +12,14 @@ export default async function handler(req, res) {
     if (!prompt) return res.status(400).json({ error: 'No prompt provided' });
 
     // Non-streaming — complete text in one response, no chunk corruption
+    // TOKEN-LIMIT-UPDATE: reduced for concise, punchy readings per BG brief
     const maxTokens = {
-      'seeker':  1000,
-      'booster': 1500,
-      'rise':    2000,
-      'wise':    2000,
-      'promax':  2500
-    }[tier] || 1000;
+      'seeker':  600,
+      'booster': 900,
+      'rise':    1200,
+      'wise':    1400,
+      'promax':  1600
+    }[tier] || 600;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
