@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bhagya Booster by BG — Boost Labh & Bhagya through Gyaan & Karma</title>
+<meta name="description" content="Boost Labh & Bhagya through Gyaan & Karma. Ancient Vedic wisdom meets precision computation. Your birth chart decoded across 23 layers.">
+<meta name="theme-color" content="#0f0f2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<!-- Google Maps loaded dynamically from /api/config -->
+<style>
+:root{
+  /* ── Midnight Indigo + Saffron Theme ── */
+  --indigo:#1a1a4e;--indigo-mid:#252565;--indigo-light:#3a3a7a;
+  --saffron:#f4801a;--saffron-light:#f9a84d;--saffron-pale:#fde8d0;
+  --cream:#fdf6e3;--white:#FDFCFA;--deep:#0f0f2e;--ink:#1a1a4e;
+  --muted:#8888bb;--border:rgba(244,128,26,0.2);--border-em:rgba(58,58,122,0.4);
+  --card:rgba(255,255,255,0.04);--r:8px;
+  /* legacy aliases for compat */
+  --emerald:var(--indigo);--emerald-mid:var(--indigo-mid);--emerald-light:var(--indigo-light);
+  --gold:var(--saffron);--gold-light:var(--saffron-light);--gold-pale:var(--saffron-pale);
+  --pearl:var(--cream);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:175%}
+body{background:var(--deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased;font-size:1rem}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 50% at 20% 20%,rgba(26,26,78,0.5) 0%,transparent 60%),
+  radial-gradient(ellipse 50% 40% at 80% 80%,rgba(244,128,26,0.08) 0%,transparent 55%)}
+.wrap{max-width:780px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.screen{display:none;min-height:100vh;animation:fu 0.5s ease forwards}
+.screen.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.site-header{padding:28px 0 20px;text-align:center;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity 0.2s}
+.site-header:hover{opacity:0.85}
+.om{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--saffron);display:block;line-height:1;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:0.7}}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;letter-spacing:0.1em;color:var(--white)}
+.tagline{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:0.78rem;color:var(--muted)}
+.coins-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(244,128,26,0.1);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:0.75rem;color:var(--saffron-light);cursor:pointer;transition:all 0.2s}
+.coins-badge:hover{background:rgba(244,128,26,0.18)}
+.promax-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,rgba(244,128,26,0.2),rgba(58,58,122,0.3));border:1px solid var(--saffron);border-radius:20px;padding:3px 10px;font-size:0.75rem;color:var(--saffron-light);animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 6px rgba(244,128,26,0.3)}50%{box-shadow:0 0 14px rgba(244,128,26,0.6)}}
+.countdown{font-size:0.72rem;letter-spacing:0.1em;color:var(--saffron-light);background:rgba(244,128,26,0.1);border:1px solid var(--border);border-radius:4px;padding:3px 10px;white-space:nowrap}
+.btn-sm{background:none;border:none;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;font-family:'Jost',sans-serif;transition:color 0.2s}
+.btn-sm:hover{color:var(--saffron)}
+.nav-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:28px}
+.nav-tab{padding:12px 20px;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);cursor:pointer;border:none;background:none;font-family:'Jost',sans-serif;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav-tab.active{color:var(--saffron);border-bottom-color:var(--saffron)}
+.nav-tab.disabled{opacity:0.3;cursor:default}
+.soon{font-size:0.55rem;background:var(--border);border-radius:2px;padding:1px 4px;margin-left:5px;letter-spacing:0.08em}
+/* HERO */
+.hero{text-align:center;padding:56px 0 44px}
+.hero-label{font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-light);margin-bottom:18px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,7vw,4rem);font-weight:300;line-height:1.12;color:var(--white);margin-bottom:18px}
+.hero-title em{font-style:italic;color:var(--saffron-light)}
+.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:440px;margin:0 auto 36px}
+.btn-google{display:inline-flex;align-items:center;gap:12px;background:var(--white);color:var(--ink);border:none;border-radius:var(--r);padding:13px 32px;font-family:'Jost',sans-serif;font-size:0.88rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.25s}
+.btn-google:hover{background:var(--saffron-pale);transform:translateY(-2px);box-shadow:0 8px 28px rgba(244,128,26,0.25)}
+/* DEMO LOGIN */
+.demo-section{margin:32px 0;padding:24px;border:1px solid var(--border);border-radius:var(--r);background:var(--card);max-width:500px;margin-left:auto;margin-right:auto;text-align:center}
+.demo-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:14px}
+.demo-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;max-width:400px;margin:0 auto}
+.demo-form input{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;color:var(--cream);font-family:'Jost',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s}
+.demo-form input:focus{border-color:var(--saffron)}
+.btn-demo{background:rgba(244,128,26,0.15);border:1px solid var(--saffron);border-radius:var(--r);padding:10px 18px;color:var(--saffron-light);font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn-demo:hover{background:rgba(244,128,26,0.25)}
+.demo-err{font-size:0.72rem;color:#e07a6a;text-align:center;margin-top:8px;min-height:18px}
+/* CREATOR SECTION */
+.creator-section{position:relative;margin:0 -20px;overflow:hidden;min-height:400px;display:flex;align-items:center}
+.creator-bg{position:absolute;inset:0;background-size:cover;background-position:center top;filter:brightness(0.28) saturate(0.7);transition:filter 0.5s}
+.creator-section:hover .creator-bg{filter:brightness(0.36) saturate(0.8)}
+.creator-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,15,46,0.75) 0%,rgba(15,15,46,0.3) 50%,rgba(244,128,26,0.05) 100%)}
+.creator-content{position:relative;z-index:1;padding:48px 36px;max-width:500px}
+.creator-label{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-light);margin-bottom:12px}
+.creator-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:8px;text-shadow:0 2px 12px rgba(0,0,0,0.5)}
+.creator-title{font-size:0.88rem;color:var(--saffron-light);letter-spacing:0.06em;margin-bottom:16px;font-weight:400}
+.creator-mission{font-size:0.92rem;color:var(--cream);line-height:1.75;margin-bottom:12px;text-shadow:0 1px 4px rgba(0,0,0,0.4)}
+.creator-aim{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--saffron-light);line-height:1.6;text-shadow:0 1px 4px rgba(0,0,0,0.4)}
+.creator-divider{width:40px;height:1px;background:var(--saffron);margin:16px 0;opacity:0.5}
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:14px;margin:36px 0;color:var(--border);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.divider span{color:var(--saffron);white-space:nowrap}
+/* SECTION HEADERS */
+.section-header{text-align:center;margin-bottom:32px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--white);margin-bottom:8px}
+.section-sub{font-size:0.82rem;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto}
+/* PRICING */
+.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:36px 0}
+.p-card{border:1px solid var(--border);border-radius:var(--r);padding:20px 14px;text-align:center;background:var(--card);backdrop-filter:blur(8px);transition:all 0.25s;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--saffron),transparent);opacity:0;transition:opacity 0.25s}
+.p-card:hover{border-color:rgba(244,128,26,0.4);transform:translateY(-2px)}
+.p-card:hover::before,.p-card.featured::before{opacity:1}
+.p-card.featured{border-color:var(--saffron);background:rgba(244,128,26,0.06)}
+.p-badge{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:6px}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:6px}
+.p-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--saffron-light);line-height:1}
+.p-sub{font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;margin:4px 0 10px}
+.p-feats{list-style:none;font-size:0.75rem;color:var(--muted);line-height:1.9;text-align:left}
+.p-feats li::before{content:'✦ ';color:var(--saffron);font-size:0.58rem}
+/* FORM */
+.s-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--white);margin-bottom:4px}
+.s-sub{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg.full{grid-column:1/-1}
+label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron)}
+input,select,textarea{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;color:var(--cream);font-family:'Jost',sans-serif;font-size:0.92rem;font-weight:300;outline:none;transition:all 0.2s;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--saffron);background:rgba(244,128,26,0.06)}
+input::placeholder,textarea::placeholder{color:rgba(253,246,227,0.25)}
+select option{background:#0f0f2e;color:var(--cream)}
+textarea{resize:vertical;min-height:72px}
+/* City autocomplete dropdown */
+.pac-container{background:#1a1a4e!important;border:1px solid rgba(244,128,26,0.3)!important;border-radius:8px!important;font-family:'Jost',sans-serif!important}
+.pac-item{color:var(--cream)!important;font-size:0.88rem!important;padding:8px 12px!important;border-top:1px solid rgba(244,128,26,0.1)!important}
+.pac-item:hover{background:rgba(244,128,26,0.1)!important}
+.pac-item-query{color:var(--saffron-light)!important}
+/* Time AM/PM */
+.time-wrap{position:relative}
+.time-wrap input[type=time]{padding-right:10px}
+.ampm-hint{font-size:0.65rem;color:var(--muted);margin-top:4px}
+.q-section{margin-top:28px;padding-top:28px;border-top:1px solid var(--border)}
+.q-label{display:flex;align-items:center;gap:8px;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:7px}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid var(--saffron);border-radius:50%;font-size:0.68rem;color:var(--saffron);flex-shrink:0}
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.plan-opt{border:1px solid var(--border);border-radius:var(--r);padding:14px 10px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--card)}
+.plan-opt:hover{border-color:var(--saffron)}
+.plan-opt.sel{border-color:var(--saffron);background:rgba(244,128,26,0.1)}
+.plan-opt .pn{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.plan-opt .pp{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--saffron-light)}
+.plan-opt.sel .pn{color:var(--saffron)}
+/* BUTTONS */
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(135deg,var(--saffron),#c85e0a);color:var(--white);border:none;border-radius:var(--r);padding:15px 32px;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;margin-top:20px}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(244,128,26,0.4)}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:var(--r);padding:9px 22px;font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--saffron);color:var(--saffron)}
+/* LOADING */
+.loading-wrap{text-align:center;padding:80px 0}
+.chakra{width:72px;height:72px;margin:0 auto 28px;position:relative}
+.cr{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+.cr:nth-child(1){border-top-color:var(--saffron);animation:spin 1.1s linear infinite}
+.cr:nth-child(2){inset:10px;border-right-color:var(--indigo-light);animation:spin 1.7s linear infinite reverse}
+.cr:nth-child(3){inset:20px;border-bottom-color:var(--saffron-light);animation:spin 2.3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:var(--white);margin-bottom:6px}
+.loading-sub{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+/* RESULT */
+.result-header{text-align:center;padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.result-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);margin-bottom:4px}
+.result-asc{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron-light)}
+.scores{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0}
+.score-card{border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center;background:var(--card)}
+.score-val{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--saffron-light);line-height:1}
+.score-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.score-bar{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:10px;overflow:hidden}
+.score-fill{height:100%;background:linear-gradient(90deg,var(--indigo-light),var(--saffron));border-radius:2px;transition:width 1s ease}
+.dasha-block{border:1px solid rgba(58,58,122,0.5);border-radius:var(--r);padding:22px;background:rgba(26,26,78,0.3);margin:20px 0}
+.dasha-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron-light);margin-bottom:12px}
+.dasha-main{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:3px}
+.dasha-dates{font-size:0.78rem;color:var(--muted)}
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.a-card{border:1px solid var(--border);border-radius:var(--r);padding:18px;background:var(--card)}
+.a-title{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.p-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(244,128,26,0.07);font-size:0.82rem}
+.p-row:last-child{border-bottom:none}
+.pname{color:var(--white)}.pval{color:var(--muted);font-size:0.75rem;text-align:right}
+.mode-toggle{display:flex;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;width:fit-content;margin-bottom:16px}
+.mode-btn{padding:8px 20px;font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;background:none;border:none;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.mode-btn.active{background:var(--saffron);color:var(--white)}
+.reading-block{border:1px solid var(--border);border-radius:var(--r);padding:26px;background:var(--card);line-height:1.9;font-size:0.95rem;color:var(--cream);min-height:120px}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--saffron);animation:blink 0.8s infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+/* CHAT */
+.chat-section{margin-top:28px;border-top:1px solid var(--border);padding-top:24px}
+.chat-header{margin-bottom:8px}
+.chat-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:4px}
+.chat-subtitle{font-size:0.8rem;color:var(--muted);line-height:1.6}
+.chat-messages{display:flex;flex-direction:column;gap:14px;margin-bottom:16px;max-height:400px;overflow-y:auto;margin-top:16px}
+.chat-msg{padding:12px 16px;border-radius:var(--r);font-size:0.88rem;line-height:1.7}
+.chat-msg.user{background:rgba(26,26,78,0.4);border:1px solid var(--border-em);align-self:flex-end;max-width:80%}
+.chat-msg.ai{background:var(--card);border:1px solid var(--border);align-self:flex-start;max-width:90%}
+.chat-input-row{display:flex;gap:10px}
+.chat-input-row input{flex:1}
+.btn-send{background:var(--saffron);border:none;border-radius:var(--r);padding:11px 18px;color:var(--white);font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.1em;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.btn-send:hover{background:var(--saffron-light);color:var(--ink)}
+.chat-limit{font-size:0.75rem;color:var(--muted);text-align:center;padding:12px;border:1px solid var(--border);border-radius:var(--r);margin-top:10px}
+/* REMEDIES */
+.remedy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px}
+.rem-card{border:1px solid var(--border);border-radius:var(--r);padding:14px;background:var(--card)}
+.rem-icon{font-size:1.3rem;margin-bottom:5px}
+.rem-type{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:3px}
+.rem-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--white)}
+/* PAYWALL */
+.paywall-wrap{position:relative;overflow:hidden;border-radius:var(--r)}
+.paywall-blur{filter:blur(4px);pointer-events:none;user-select:none;opacity:0.6}
+.paywall-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(15,15,46,0.85);backdrop-filter:blur(2px);border:1px solid var(--border);border-radius:var(--r);padding:24px}
+.paywall-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--white)}
+.paywall-sub{font-size:0.8rem;color:var(--muted);text-align:center;max-width:280px}
+/* UPGRADE BANNER */
+.upgrade-banner{border:1px solid var(--saffron);border-radius:var(--r);padding:24px;text-align:center;background:linear-gradient(135deg,rgba(244,128,26,0.08),rgba(26,26,78,0.1));margin:24px 0}
+.upgrade-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--white);margin-bottom:6px}
+.upgrade-sub{font-size:0.8rem;color:var(--muted);margin-bottom:18px}
+/* ACTIONS */
+.action-row{display:flex;gap:10px;margin:16px 0;flex-wrap:wrap}
+.btn-action{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:9px 18px;font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.btn-action:hover{border-color:var(--saffron);color:var(--saffron)}
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);margin-top:48px;padding:40px 0;font-size:0.78rem;color:var(--muted);line-height:1.8}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:32px}
+.footer-col-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:12px;font-weight:500}
+.footer-col a,.footer-col span{display:block;color:var(--muted);font-size:0.78rem;text-decoration:none;transition:color 0.2s;margin-bottom:6px;cursor:pointer}
+.footer-col a:hover{color:var(--saffron-light)}
+.footer-col span.coming{color:rgba(136,136,187,0.5);font-size:0.72rem;cursor:default}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;text-align:center}
+.footer-powered{font-size:0.72rem;color:var(--saffron-light);letter-spacing:0.12em;margin-bottom:8px;font-weight:500}
+.footer-disc{font-size:0.65rem;color:rgba(136,136,187,0.5);line-height:1.7}
+/* ABOUT PAGE */
+.about-section{padding:48px 0}
+.about-hero{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start;margin-bottom:40px}
+.about-photo{width:200px;height:200px;border-radius:var(--r);object-fit:cover;border:2px solid var(--border)}
+.about-photo-placeholder{width:200px;height:200px;border-radius:var(--r);background:var(--indigo-mid);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:4rem}
+.about-photo-missing{background:var(--indigo-mid);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.about-photo-missing::after{content:'🙏';font-size:4rem;display:flex;align-items:center;justify-content:center;width:200px;height:200px}
+.about-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--white);margin-bottom:8px}
+.about-role{font-size:0.88rem;color:var(--saffron-light);letter-spacing:0.06em;margin-bottom:16px}
+.about-bio{font-size:0.92rem;color:var(--muted);line-height:1.85}
+.about-mission{border:1px solid var(--border);border-radius:var(--r);padding:28px;background:rgba(26,26,78,0.3);margin-top:20px}
+.about-mission-text{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--cream);line-height:1.7}
+/* TERMS */
+.terms-card{border:1px solid var(--border);border-radius:var(--r);padding:28px;background:var(--card);max-height:320px;overflow-y:auto;font-size:0.88rem;line-height:1.8;color:var(--muted)}
+.terms-check{display:flex;align-items:flex-start;gap:12px;margin:20px 0;cursor:pointer;font-size:0.88rem;color:var(--cream)}
+.terms-check input{width:16px;height:16px;accent-color:var(--saffron);flex-shrink:0;margin-top:3px}
+/* PRIVACY PAGE */
+.policy-content{border:1px solid var(--border);border-radius:var(--r);padding:32px;background:var(--card);font-size:0.88rem;line-height:1.9;color:var(--muted)}
+.policy-content h2{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--saffron);margin:24px 0 8px;font-weight:400}
+.policy-content h2:first-child{margin-top:0}
+.policy-content p{margin-bottom:12px}
+.policy-content strong{color:var(--cream);font-weight:400}
+/* DEMO BADGE */
+.demo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,128,26,0.15);border:1px solid var(--saffron);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:var(--saffron-light);letter-spacing:0.1em;text-transform:uppercase}
+/* ADMIN */
+.admin-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:16px}
+.admin-table th{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-weight:400}
+.admin-table td{padding:10px 12px;border-bottom:1px solid rgba(244,128,26,0.07);color:var(--cream);vertical-align:middle}
+.admin-table tr:hover td{background:rgba(244,128,26,0.04)}
+.plan-pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase}
+.plan-pill.seeker{background:rgba(136,136,187,0.15);color:var(--muted);border:1px solid var(--border)}
+.plan-pill.booster{background:rgba(244,128,26,0.15);color:var(--saffron-light);border:1px solid var(--border)}
+.plan-pill.rise{background:rgba(58,58,122,0.3);color:var(--saffron-light);border:1px solid var(--border-em)}
+.plan-pill.wise{background:rgba(249,168,77,0.15);color:var(--saffron-light);border:1px solid rgba(249,168,77,0.3)}
+.plan-pill.promax{background:linear-gradient(135deg,rgba(244,128,26,0.2),rgba(58,58,122,0.2));color:var(--white);border:1px solid var(--saffron)}
+/* MISC */
+.err{color:#E07A6A;font-size:0.78rem;text-align:center;margin-top:10px}
+.notice{font-size:0.72rem;color:var(--muted);text-align:center;margin-top:12px}
+.stagger>*{opacity:0;animation:fu 0.5s ease forwards}
+.stagger>*:nth-child(1){animation-delay:0.05s}.stagger>*:nth-child(2){animation-delay:0.12s}
+.stagger>*:nth-child(3){animation-delay:0.19s}.stagger>*:nth-child(4){animation-delay:0.26s}
+@media(max-width:600px){
+  /* Layouts */
+  .form-grid,.analysis-grid,.scores{grid-template-columns:1fr}
+  .pricing,.plan-grid{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:2rem}
+  .creator-content{padding:32px 24px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .demo-form{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .btn-demo{grid-column:1/-1}
+  .about-hero{grid-template-columns:1fr}
+  /* Bigger tap targets */
+  input,select,textarea{padding:14px 16px;font-size:1rem}
+  .btn-primary{padding:18px 32px;font-size:0.9rem}
+  .btn-outline{padding:14px 22px;font-size:0.8rem}
+  .btn-send{padding:14px 20px}
+  .nav-tab{padding:14px 16px}
+  .plan-opt{padding:18px 10px}
+  /* Larger reading text */
+  .reading-block{font-size:1.05rem;line-height:2;padding:20px 16px}
+  .chat-msg{font-size:0.95rem;line-height:1.8}
+  .p-row{font-size:0.88rem;padding:8px 0}
+  /* Tighter wrap on small screens */
+  .wrap{padding:0 14px}
+  .top-bar{font-size:0.72rem;flex-wrap:wrap;gap:6px}
+  .chat-input-row{flex-direction:column}
+  .chat-input-row input{width:100%}
+  .btn-send{width:100%}
+}
+/* Kill heavy animations on low-power / prefer-reduced-motion */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ SCREEN: LANDING ══════════════ -->
+<div class="screen active" id="screen-landing">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')">
+    <span class="om">ॐ</span>
+    <div class="brand">Bhagya Booster by BG</div>
+    <div class="tagline">Your Karma Blessings Guide</div>
+  </header>
+  <div class="hero stagger">
+    <div class="hero-label">Vedic Jyotish · KP Astrology · Swiss Ephemeris</div>
+    <h1 class="hero-title">Boost Labh &amp; Bhagya<br><em>through Gyaan &amp; Karma</em></h1>
+    <p class="hero-sub">23 layers of ancient wisdom — planets, dashas, yogas, remedies — computed in seconds. Personalised just for you.</p>
+    <button class="btn-google" id="btn-google-signin" onclick="signInWithGoogle()">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z"/></svg>
+      Continue with Google — Free
+    </button>
+    <div class="notice">No credit card · Free reading on signup</div>
+  </div>
+
+  <div class="divider"><span>✦ Choose Your Path ✦</span></div>
+  <div class="section-header">
+    <div class="section-title">Plans &amp; Pricing</div>
+    <div class="section-sub">Start free. Unlock deeper wisdom whenever you're ready. All prices include GST.</div>
+  </div>
+  <div class="pricing stagger">
+    <div class="p-card">
+      <div class="p-badge">Always Free</div><div class="p-name">Seeker</div>
+      <div class="p-price">₹0</div><div class="p-sub">3 charts lifetime</div>
+      <ul class="p-feats"><li>Birth chart &amp; scores</li><li>Dasha period</li><li>3 chat questions</li></ul>
+    </div>
+    <div class="p-card featured">
+      <div class="p-badge">One-Time</div><div class="p-name">Booster</div>
+      <div class="p-price">₹199</div><div class="p-sub">1 chart · 24 hours</div>
+      <ul class="p-feats"><li>Full reading</li><li>All yogas &amp; remedies</li><li>Unlimited chat 24hr</li><li>PDF download</li></ul>
+    </div>
+    <div class="p-card">
+      <div class="p-badge">Monthly</div><div class="p-name">Rise</div>
+      <div class="p-price">₹499</div><div class="p-sub">7 charts/month</div>
+      <ul class="p-feats"><li>All features</li><li>Technical mode</li><li>PDF + Audio</li><li>Unlimited chat</li></ul>
+    </div>
+    <div class="p-card">
+      <div class="p-badge">Annual</div><div class="p-name">Wise</div>
+      <div class="p-price">₹1999</div><div class="p-sub">10 charts/month</div>
+      <ul class="p-feats"><li>Everything in Rise</li><li>Priority support</li><li>Best value</li></ul>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦ Demo / Test Access ✦</span></div>
+  <div class="demo-section">
+    <div class="demo-label">Demo / Test Access</div>
+    <div class="demo-form">
+      <input type="text" id="demo-user" placeholder="Username" autocomplete="off">
+      <input type="password" id="demo-pass" placeholder="Password" autocomplete="off">
+      <button class="btn-demo" onclick="demoLogin()">Enter Demo</button>
+    </div>
+    <div class="demo-err" id="demo-err"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Products</div>
+        <a href="javascript:void(0)" onclick="showScreen('screen-landing')">Bhagya Booster</a>
+        <span class="coming">Business Guide — Coming Soon</span>
+        <span class="coming">Business SWOT — Coming Soon</span>
+        <span class="coming">Tools — Coming Soon</span>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="javascript:void(0)" onclick="showScreen('screen-privacy')">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="showScreen('screen-terms')">Terms of Use</a>
+        <a href="javascript:void(0)" onclick="showScreen('screen-refund')">Refund Policy</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="javascript:void(0)" onclick="showScreen('screen-about')">About Us</a>
+        <a href="/cdn-cgi/l/email-protection#aedddbdedec1dcdaeecccfddcbddc6dbc9cfc2cf80cdc1c3">Support</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://baseshugala.com" target="_blank">BaseshUGala.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-powered">Powered by 39Solutions LLP</div>
+      <div class="footer-disc">
+        An AI system trained by Basesh Gala on Vedic astrological calculations, KP methodology, and classical remedy systems.<br>
+        All payments are final. No refunds once a reading has been generated. We never sell your data.<br>
+        © 2026 Bhagya Booster by BG — BaseshUGala.com
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: ABOUT ══════════════ -->
+<div class="screen" id="screen-about">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div><div class="tagline">Your Karma Blessings Guide</div></header>
+  <div class="about-section">
+    <div class="s-title" style="margin-bottom:4px">About Us</div>
+    <div class="s-sub" style="margin-bottom:32px;text-align:left;max-width:100%">The story behind Bhagya Booster</div>
+    <div class="about-hero">
+      <img src="https://cdn.jsdelivr.net/gh/baseshgala/baseshugala@main/BG.png" alt="Basesh Gala" class="about-photo" id="about-photo" onerror="this.onerror=null;this.src='';this.classList.add('about-photo-missing');">
+      <div>
+        <div class="about-name">Basesh Gala</div>
+        <div class="about-role">Business Mentor · Investor · Spiritual Guide · Mumbai</div>
+        <div class="about-bio">
+          Basesh Gala is a Mumbai-based entrepreneur, business mentor, and investor with over two decades of experience helping founders build meaningful businesses. His journey into Vedic astrology began as a personal quest — and revealed profound connections between ancient wisdom and modern success.<br><br>
+          Combining Swiss Ephemeris precision with KP methodology and classical Jyotish, Basesh created Bhagya Booster to make authentic Vedic guidance accessible to every entrepreneur navigating the unpredictable journey of building something great.
+        </div>
+      </div>
+    </div>
+    <div class="about-mission">
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:12px">Our Mission</div>
+      <div class="about-mission-text">
+        "To guide 108 million entrepreneurs towards Riddhi Siddhi Shubh Labh — empowering their decisions with the light of Vedic wisdom, so they build not just successful businesses, but meaningful lives."
+      </div>
+      <div style="margin-top:16px;font-size:0.82rem;color:var(--muted)">— Basesh Gala, Creator of Bhagya Booster</div>
+    </div>
+    <div style="margin-top:28px">
+      <div class="a-card">
+        <div class="a-title">Technology</div>
+        <div style="font-size:0.88rem;color:var(--muted);line-height:1.8">
+          Bhagya Booster is powered by Swiss Ephemeris — the world's most precise astronomical engine — combined with KP astrology methodology, classical Vedic Jyotish, and an AI system trained by Basesh Gala on decades of astrological knowledge. Every reading computes 23 layers of analysis in seconds, personalised to your exact birth data.
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn-outline" style="margin-bottom:20px;width:100%" onclick="showScreen('screen-landing')">← Back to Home</button>
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-powered">Powered by 39Solutions LLP</div>
+      <div class="footer-disc">© 2026 Bhagya Booster by BG — BaseshUGala.com</div>
+    </div>
+  </footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: TERMS ══════════════ -->
+<div class="screen" id="screen-terms">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div><div class="tagline">Your Karma Blessings Guide</div></header>
+  <div style="padding:40px 0 20px;text-align:center"><div class="s-title">Before We Begin</div><div class="s-sub">Please read and accept our terms</div></div>
+  <div class="terms-card">
+    <strong style="color:var(--cream)">Terms of Use — Bhagya Booster by BG</strong><br><br>
+    <strong style="color:var(--cream)">1. Nature of Service</strong><br>Bhagya Booster provides astrological readings and insights based on Vedic Jyotish, KP methodology, and classical remedy systems. All readings are generated by artificial intelligence trained on astrological principles by Basesh Gala.<br><br>
+    <strong style="color:var(--cream)">2. Not Professional Advice</strong><br>Readings are for guidance and entertainment purposes only. They do not constitute medical, legal, financial, or psychological advice. For serious life decisions, please consult qualified professionals.<br><br>
+    <strong style="color:var(--cream)">3. Accuracy Disclaimer</strong><br>Astrology is a beautiful art and science. Neither humans nor AI can be 100% accurate. Karma and divine blessings are supreme — no AI or human can override your free will or destiny.<br><br>
+    <strong style="color:var(--cream)">4. No Refund Policy</strong><br>All payments are final and non-refundable once a reading has been generated. By proceeding with payment, you acknowledge and accept this no-refund policy.<br><br>
+    <strong style="color:var(--cream)">5. Indemnification</strong><br>By using this service, you acknowledge that BaseshUGala.com, Basesh Gala, and BG Baba are explicitly indemnified from any decisions made, actions taken, or outcomes experienced based on readings, remedies, or guidance provided by this service.<br><br>
+    <strong style="color:var(--cream)">6. Data Usage &amp; Privacy</strong><br>Birth data and reading information you provide may be stored and used to improve the AI system. Your data is handled securely and never sold to third parties.<br><br>
+    <strong style="color:var(--cream)">7. BG Coins</strong><br>BG Coins are non-transferable, have no cash value, and expire after 3 months of issuance. Coins cannot be redeemed for cash under any circumstances.<br><br>
+    <strong style="color:var(--cream)">8. Governing Law</strong><br>This agreement is governed by the laws of India. Any disputes shall be subject to the jurisdiction of courts in Mumbai, Maharashtra.
+  </div>
+  <label class="terms-check"><input type="checkbox" id="terms-cb" onchange="document.getElementById('terms-btn').disabled=!this.checked"> I have read and agree to the Terms of Use and No Refund Policy. I understand this is for guidance only and BaseshUGala.com is not liable for my decisions.</label>
+  <button class="btn-primary" id="terms-btn" disabled onclick="acceptTerms()">Continue to Bhagya Booster →</button>
+  <div class="notice"><a href="javascript:void(0)" onclick="showScreen('screen-privacy')" style="color:var(--muted)">Read our Privacy Policy</a></div>
+  <footer class="site-footer">
+    <div class="footer-bottom"><div class="footer-powered">Powered by 39Solutions LLP</div><div class="footer-disc">© 2026 Bhagya Booster by BG — BaseshUGala.com</div></div>
+  </footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: PRIVACY ══════════════ -->
+<div class="screen" id="screen-privacy">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div><div class="tagline">Your Karma Blessings Guide</div></header>
+  <div style="padding:40px 0 20px">
+    <div class="s-title">Privacy Policy</div>
+    <div class="s-sub">Last updated: March 2026</div>
+  </div>
+  <div class="policy-content">
+    <h2>1. Who We Are</h2><p>Bhagya Booster by BG is an AI-powered Vedic astrology guidance system created by <strong>Basesh Gala</strong>, operating at BaseshUGala.com. Powered by 39Solutions LLP.</p>
+    <h2>2. What We Collect</h2><p><strong>Account information:</strong> Name, email address, and profile photo from your Google account when you sign in.</p><p><strong>Birth data:</strong> Date of birth, time of birth, city of birth, and gender — provided by you to generate astrological readings.</p><p><strong>Reading context:</strong> Your profession, life highlights, and challenges — provided voluntarily to personalise your reading.</p><p><strong>Usage data:</strong> Reading history, chat history, ratings, and feedback — stored to improve the AI system.</p><p><strong>Payment data:</strong> Payment transactions are processed by Razorpay. We store only transaction IDs and plan information, not card details.</p>
+    <h2>3. How We Use Your Data</h2><p>To provide the service, to improve AI accuracy, and to manage your account. We never sell your data to third parties or use it for advertising.</p>
+    <h2>4. Data Storage &amp; Security</h2><p>Your data is stored securely on Google Firebase (Firestore) with industry-standard encryption.</p>
+    <h2>5. Your Rights</h2><p>You may request deletion of your account and data at any time by contacting <a href="/cdn-cgi/l/email-protection#11626461617e6365517370627462796476707d703f727e7c">our support team</a>. We will delete your data within 30 days of a valid request.</p>
+    <h2>6. Contact</h2><p>For privacy-related queries: <strong><a href="/cdn-cgi/l/email-protection#2e5d5b5e5e415c5a6e4c4f5d4b5d465b494f424f004d4143">support team</a></strong></p>
+  </div>
+  <button class="btn-outline" style="margin-top:20px;width:100%" onclick="goBack()">← Back</button>
+  <footer class="site-footer"><div class="footer-bottom"><div class="footer-powered">Powered by 39Solutions LLP</div><div class="footer-disc">© 2026 Bhagya Booster by BG — BaseshUGala.com</div></div></footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: REFUND ══════════════ -->
+<div class="screen" id="screen-refund">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div><div class="tagline">Your Karma Blessings Guide</div></header>
+  <div style="padding:40px 0 20px"><div class="s-title">Refund Policy</div><div class="s-sub">Last updated: March 2026</div></div>
+  <div class="policy-content">
+    <h2>No Refund Policy</h2><p>All payments made for Bhagya Booster plans (Booster, Rise, Wise, or Pro Max) are <strong>final and non-refundable</strong> once a reading has been generated.</p>
+    <h2>Why No Refunds?</h2><p>Each reading involves real computational costs — Swiss Ephemeris calculations, AI generation, and server resources. Once a reading is generated, these costs are incurred.</p>
+    <h2>Technical Failures</h2><p>In the rare case of a technical failure that prevents reading generation, please contact <strong><a href="/cdn-cgi/l/email-protection#added8ddddc2dfd9edcfccdec8dec5d8caccc1cc83cec2c0">our support team</a></strong> within 24 hours. We will either generate your reading or issue a credit.</p>
+    <h2>Contact Us</h2><p>For any payment concerns: <strong><a href="/cdn-cgi/l/email-protection#67141217170815132705061402140f1200060b064904080a">our support team</a></strong></p>
+  </div>
+  <button class="btn-outline" style="margin-top:20px;width:100%" onclick="goBack()">← Back</button>
+  <footer class="site-footer"><div class="footer-bottom"><div class="footer-powered">Powered by 39Solutions LLP</div><div class="footer-disc">© 2026 Bhagya Booster by BG — BaseshUGala.com</div></div></footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: FORM ══════════════ -->
+<div class="screen" id="screen-form">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div><div class="tagline">Your Karma Blessings Guide</div></header>
+  <div class="top-bar">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span id="form-email" style="font-size:0.75rem">—</span>
+      <span id="demo-badge-form" style="display:none" class="demo-badge">🎭 Demo</span>
+      <span class="coins-badge" onclick="showCoins()">🪙 <span id="form-coins">0</span></span>
+      <span id="form-promax" class="promax-badge" style="display:none">⚡ Pro Max</span>
+      <span id="form-cd" class="countdown" style="display:none"></span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn-sm" onclick="showScreen('screen-form')">+ New Chart</button>
+      <button class="btn-sm" onclick="signOut()">Sign Out</button>
+    </div>
+  </div>
+  <nav class="nav-tabs">
+    <button class="nav-tab active">✦ Astro Reading</button>
+    <button class="nav-tab disabled">Business <span class="soon">Soon</span></button>
+    <button class="nav-tab disabled">SWOT <span class="soon">Soon</span></button>
+  </nav>
+  <div class="section-header" style="text-align:left;margin-bottom:20px">
+    <div class="s-title">Your Birth Details</div>
+    <div class="s-sub" style="text-align:left;max-width:100%">Enter your exact birth information for accurate analysis. Time of birth is critical — even 10 minutes makes a difference.</div>
+  </div>
+  <div class="form-grid">
+    <div class="fg full"><label>Full Name</label><input type="text" id="inp-name" placeholder="As per birth records"></div>
+    <div class="fg"><label>Date of Birth</label><input type="date" id="inp-dob"></div>
+    <div class="fg">
+      <label>Time of Birth</label>
+      <div class="time-wrap">
+        <input type="time" id="inp-tob">
+        <div class="ampm-hint">24-hour format · e.g. 14:30 = 2:30 PM · 07:19 = 7:19 AM</div>
+      </div>
+    </div>
+    <div class="fg"><label>City of Birth</label><input type="text" id="inp-city" placeholder="e.g. Mumbai, Delhi, Pune..." autocomplete="off"><div class="ampm-hint">Type full city name for best results · e.g. Mumbai not Mum</div></div>
+    <div class="fg"><label>Gender</label><select id="inp-gender"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option></select></div>
+  </div>
+  <div class="q-section">
+    <div class="section-header" style="text-align:left;margin-bottom:20px">
+      <div class="s-title" style="font-size:1.4rem">3 Questions for Your Guide</div>
+      <div class="s-sub" style="text-align:left;max-width:100%">These personalise your reading and help your cosmic guide understand your current chapter. Your answers are never shared.</div>
+    </div>
+    <div class="fg" style="margin-bottom:14px"><div class="q-label"><span class="q-num">1</span>Your Current Profession</div><input type="text" id="inp-q1" placeholder="e.g. Business owner, Engineer..."></div>
+    <div class="fg" style="margin-bottom:14px"><div class="q-label"><span class="q-num">2</span>Your Life's Biggest High</div><textarea id="inp-q2" placeholder="Your greatest achievement or turning point..."></textarea></div>
+    <div class="fg"><div class="q-label"><span class="q-num">3</span>Your Current Biggest Challenge</div><textarea id="inp-q3" placeholder="What are you navigating right now?"></textarea></div>
+  </div>
+  <div style="margin-top:28px">
+    <div class="section-header" style="text-align:left;margin-bottom:16px">
+      <div class="s-title" style="font-size:1.3rem">Choose Your Plan</div>
+      <div class="s-sub" style="text-align:left;max-width:100%">BG Coins can be used to unlock paid plans. All prices include GST.</div>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-opt sel" data-plan="seeker" onclick="selPlan(this,'seeker')"><div class="pn">Seeker</div><div class="pp">₹0</div></div>
+      <div class="plan-opt" data-plan="booster" onclick="selPlan(this,'booster')"><div class="pn">Booster</div><div class="pp">₹199</div></div>
+      <div class="plan-opt" data-plan="rise" onclick="selPlan(this,'rise')"><div class="pn">Rise</div><div class="pp">₹499</div></div>
+      <div class="plan-opt" data-plan="wise" onclick="selPlan(this,'wise')"><div class="pn">Wise</div><div class="pp">₹1999</div></div>
+    </div>
+  </div>
+  <div id="form-err" class="err"></div>
+  <button class="btn-primary" id="btn-submit" onclick="submitForm()">✦ Boost My Bhagya</button>
+  <div class="notice">Your birth data is saved securely · <a href="javascript:void(0)" onclick="showScreen('screen-privacy')" style="color:var(--muted)">Privacy Policy</a></div>
+  <footer class="site-footer">
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+      <a href="javascript:void(0)" onclick="showScreen('screen-privacy')" style="color:var(--muted);font-size:0.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">Privacy Policy</a>
+      <a href="javascript:void(0)" onclick="showScreen('screen-terms')" style="color:var(--muted);font-size:0.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">Terms of Use</a>
+      <a href="javascript:void(0)" onclick="showScreen('screen-refund')" style="color:var(--muted);font-size:0.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">Refund Policy</a>
+    </div>
+    <div class="footer-bottom"><div class="footer-powered">Powered by 39Solutions LLP</div><div class="footer-disc">All payments are final. No refunds once a reading has been generated. © 2026 Bhagya Booster by BG</div></div>
+  </footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: LOADING ══════════════ -->
+<div class="screen" id="screen-loading">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div></header>
+  <div class="loading-wrap">
+    <div class="chakra"><div class="cr"></div><div class="cr"></div><div class="cr"></div></div>
+    <div class="loading-title" id="loading-title">Casting your chart…</div>
+    <div class="loading-sub" id="loading-sub">Computing 23 layers of Jyotish analysis</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: RESULT ══════════════ -->
+<div class="screen" id="screen-result">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">Bhagya Booster by BG</div><div class="tagline">Your Karma Blessings Guide</div></header>
+  <div class="top-bar">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span id="res-email" style="font-size:0.75rem">—</span>
+      <span id="demo-badge-res" style="display:none" class="demo-badge">🎭 Demo</span>
+      <span class="coins-badge" onclick="showCoins()">🪙 <span id="res-coins">0</span></span>
+      <span id="res-promax" class="promax-badge" style="display:none">⚡ Pro Max</span>
+      <span id="res-cd" class="countdown" style="display:none"></span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn-outline" style="padding:5px 14px;font-size:0.7rem" onclick="goNew()">+ New Reading</button>
+      <button class="btn-sm" onclick="signOut()">Sign Out</button>
+    </div>
+  </div>
+  <div id="result-content"></div>
+  <footer class="site-footer">
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+      <a href="javascript:void(0)" onclick="showScreen('screen-privacy')" style="color:var(--muted);font-size:0.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">Privacy Policy</a>
+      <a href="javascript:void(0)" onclick="showScreen('screen-terms')" style="color:var(--muted);font-size:0.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">Terms of Use</a>
+      <a href="javascript:void(0)" onclick="showScreen('screen-refund')" style="color:var(--muted);font-size:0.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em">Refund Policy</a>
+    </div>
+    <div class="footer-bottom"><div class="footer-powered">Powered by 39Solutions LLP</div><div class="footer-disc">All payments are final. No refunds once a reading has been generated. We never sell your data.<br>For serious life decisions consult qualified experts. Karma and divine blessings are supreme.<br>BaseshUGala.com, Basesh Gala, and BG Baba are explicitly indemnified from any decisions made based on readings provided.<br>© 2026 Bhagya Booster by BG — BaseshUGala.com</div></div>
+  </footer>
+</div>
+</div>
+
+<!-- ══════════════ SCREEN: ADMIN ══════════════ -->
+<div class="screen" id="screen-admin">
+<div class="wrap">
+  <header class="site-header" onclick="showScreen('screen-landing')"><span class="om">ॐ</span><div class="brand">BG Baba Admin</div><div class="tagline">Basesh Gala · Internal Dashboard</div></header>
+  <div style="padding:32px 0 20px;display:flex;justify-content:space-between;align-items:center">
+    <div><div class="s-title" style="font-size:1.4rem">User Dashboard</div><div class="s-sub">Manage plans &amp; Pro Max access</div></div>
+    <button class="btn-sm" onclick="signOut()">Sign Out</button>
+  </div>
+  <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+    <button class="btn-outline" onclick="loadAdminUsers()">↻ Refresh</button>
+    <div style="flex:1;max-width:300px"><input id="admin-search" type="text" placeholder="Search by email..." oninput="filterAdminUsers()" style="height:38px"></div>
+  </div>
+  <div id="admin-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px"></div>
+  <div id="admin-table-wrap" style="overflow-x:auto">
+    <div style="color:var(--muted);font-size:0.85rem;text-align:center;padding:40px">Loading users...</div>
+  </div>
+  <!-- Grant Pro Max Modal -->
+  <div id="promax-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center">
+    <div style="background:#1a1a4e;border:1px solid var(--saffron);border-radius:var(--r);padding:32px;max-width:400px;width:90%;margin:auto">
+      <div class="s-title" style="font-size:1.3rem;margin-bottom:4px">Grant Pro Max</div>
+      <div class="s-sub">72 hours unlimited access</div>
+      <div class="fg" style="margin-bottom:16px"><label>User</label><input id="pm-user-email" readonly style="opacity:0.6"></div>
+      <div class="fg" style="margin-bottom:16px"><label>Duration (hours)</label><input id="pm-hours" type="number" value="72" min="1" max="720"></div>
+      <div class="fg" style="margin-bottom:20px"><label>Note (optional)</label><input id="pm-note" placeholder="e.g. Beta tester, Influencer..."></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-primary" style="margin-top:0" onclick="grantProMax()">⚡ Grant Pro Max</button>
+        <button class="btn-outline" onclick="closeProMaxModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer" style="margin-top:40px"><div class="footer-bottom"><div class="footer-powered">Powered by 39Solutions LLP</div><div class="footer-disc">© 2026 Bhagya Booster by BG — BaseshUGala.com</div></div></footer>
+</div>
+</div>
+
+<!-- ══════════════ APP LOGIC ══════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// ── CONFIG ──
+const FC={
+  apiKey:"AIzaSyCL2wW7pUehTgRQK7ydxWgQE6r2b2ZPNaw",
+  authDomain:"baseshugala.firebaseapp.com",
+  projectId:"baseshugala",
+  storageBucket:"baseshugala.firebasestorage.app",
+  messagingSenderId:"359974982553",
+  appId:"1:359974982553:web:27899fb79809c0600af908"
+};
+firebase.initializeApp(FC);
+const auth=firebase.auth();
+const db=firebase.firestore();
+
+window.RAZORPAY_KEY='rzp_test_placeholder';
+fetch('/api/config').then(r=>r.json()).then(c=>{
+  if(c&&c.razorpay_key) window.RAZORPAY_KEY=c.razorpay_key;
+  if(c&&c.google_maps_key){
+    // Load Maps JS dynamically — key never sits in HTML
+    const s=document.createElement('script');
+    s.src=`https://maps.googleapis.com/maps/api/js?key=${c.google_maps_key}&libraries=places&callback=initCityAutocomplete`;
+    s.async=true;s.defer=true;
+    document.head.appendChild(s);
+  }
+}).catch(()=>{});
+
+const ADMIN_EMAIL=atob('YmFzZXNoLmdhbGFAMzlzb2x1dGlvbnMuY29t');
+const DEMO_USER='test';
+const DEMO_PASS='test12345@@';
+
+// ── STATE ──
+let CU=null,selPlanVal='seeker',AD=null,coins=0,sub=null;
+let chatHist=[],chatCnt=0,readingId=null,cdTimer=null;
+let currentChartId=null,currentMeta=null;
+let allAdminUsers=[];
+let isDemoMode=false;
+let simpleReadingText=''; // FIX B10/B11: store simple reading separately
+let currentMode='simple'; // FIX B6: track current mode
+
+// ── DEMO LOGIN ──
+function demoLogin(){
+  const u=document.getElementById('demo-user').value.trim();
+  const p=document.getElementById('demo-pass').value;
+  const err=document.getElementById('demo-err');
+  if(u!==DEMO_USER||p!==DEMO_PASS){err.textContent='Invalid demo credentials.';return;}
+  err.textContent='';
+  isDemoMode=true;
+  CU={uid:'demo_user',email:'demo@bgbaba.com',displayName:'Demo User'};
+  coins=199;
+  sub={plan:'promax',status:'active',expiry:new Date(Date.now()+72*60*60*1000).toISOString()};
+  updateCoins();
+  updateProMaxBadge();
+  ['form-email','res-email'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='demo@bgbaba.com';});
+  ['demo-badge-form','demo-badge-res'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='inline-flex';});
+  loadDemoResult();
+}
+
+// ── DEMO RESULT DATA ──
+function loadDemoResult(){
+  // Pre-loaded Basesh sample chart data
+  AD={
+    name:'Basesh Gala',dob:'1980-01-15',tob:'07:30',city:'Mumbai',
+    asc_sign_name:'Sagittarius',asc_nakshatra:'Mula',asc_pada:2,
+    moon_nak:'Ashwini',lagna_lord:'Jupiter',
+    yogi_planet:'Jupiter',avayogi_planet:'Saturn',badhakesh:'Mercury',
+    wealth_score:78,fortune_score:82,yoga_count:14,
+    kp_sub_lord:'Venus',
+    dasha_lord:'Jupiter',dasha_start_date:'2019-12-26',dasha_end_date:'2035-12-26',
+    antardasha_lord:'Mercury',antardasha_start_date:'2023-08-26',antardasha_end_date:'2026-02-26',
+    karakas:{AK:'Sun',DK:'Venus'},
+    chart:{
+      Sun:{sign:8,d1_house:9,nakshatra:'Uttara Ashadha'},
+      Moon:{sign:0,d1_house:1,nakshatra:'Ashwini'},
+      Mars:{sign:1,d1_house:2,nakshatra:'Rohini'},
+      Mercury:{sign:9,d1_house:10,nakshatra:'Sravana'},
+      Jupiter:{sign:3,d1_house:4,nakshatra:'Pushya'},
+      Venus:{sign:9,d1_house:10,nakshatra:'Uttara Ashadha'},
+      Saturn:{sign:5,d1_house:6,nakshatra:'Uttara Phalguni'},
+      Rahu:{sign:1,d1_house:2,nakshatra:'Krittika'},
+      Ketu:{sign:7,d1_house:8,nakshatra:'Vishakha'}
+    },
+    yogas_present:['Hamsa Yoga','Gaja Kesari Yoga','Dharma Karma Adhipati','Neecha Bhanga Raja Yoga','Budha Aditya Yoga'],
+    naam_jaap:'Om Gurave Namah',
+    daan:[{day:'Thursday',item:'Yellow cloth, turmeric, gold'}],
+    remedies:{
+      gemstone:{planet:'Jupiter',stone:'Yellow Sapphire',weight:'3-5 carats',finger:'Index finger, right hand'},
+      naam_jaap:'Om Gurave Namah — 108 times daily',
+      rudraksha:{slot:5,planet:'Jupiter',reason:'Enhances wisdom and prosperity'},
+      daan:'Yellow cloth and turmeric to teachers on Thursday'
+    }
+  };
+  const meta={name:'Basesh Gala',q1:'Business Mentor & Investor',q2:'Built multiple successful ventures across India',q3:'Scaling impact to guide 108 million entrepreneurs'};
+  currentMeta=meta;
+  showScreen('screen-loading');
+  setLoader('Loading demo chart…','Pre-computed sample for Razorpay review');
+  setTimeout(async()=>{
+    await buildResult(AD,meta);
+    // Override reading with demo text
+    const el=document.getElementById('reading-text');
+    if(el){
+      simpleReadingText='This is a sample reading for demonstration purposes. Basesh Gala, your Sagittarius Ascendant with Mula nakshatra gives you a natural inclination towards deep inquiry and transformation. Jupiter as your Lagna Lord in the 4th house creates the powerful Hamsa Yoga — one of the five Pancha Mahapurusha yogas — indicating exceptional wisdom, compassion, and the ability to guide others.\n\nYou are currently in the Jupiter Mahadasha (2019–2035), one of the most auspicious periods for expansion, knowledge, and spiritual growth. The Mercury Antardasha until February 2026 enhances communication, business acumen, and the ability to connect ideas across domains.\n\nYour Labh Score of 78 and Bhagya Score of 82 indicate strong material and spiritual potential. The Gaja Kesari Yoga formed by the Moon-Jupiter connection amplifies your natural ability to inspire and lead. You are in a powerful phase for building lasting legacy.\n\nRemedies: Chant "Om Gurave Namah" 108 times daily. Wear a Yellow Sapphire of 3-5 carats on the index finger of your right hand on a Thursday. Donate yellow cloth and turmeric to teachers on Thursdays.';
+      el.innerHTML=simpleReadingText.replace(/\n/g,'<br>');
+    }
+  },1500);
+}
+
+// ── REFERRAL on load ──
+const rp=new URLSearchParams(location.search).get('ref');
+if(rp) localStorage.setItem('bg_ref',rp);
+
+// ── ADMIN route ──
+if(location.pathname==='/admin'){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-admin').classList.add('active');
+}
+
+// ── AUTH ──
+auth.onAuthStateChanged(async u=>{
+  if(u&&!isDemoMode){
+    CU=u;
+    ['form-email','res-email'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=u.email;});
+    await loadProfile();
+    const scr=getCurScreen();
+    // FIX BUG1: Firebase persistence keeps prior screen active for repeat users
+    // so scr may be screen-result/screen-form, not screen-landing. Treat any
+    // non-admin, non-result screen (or screen-landing) as the auth entry point.
+    const isEntryPoint=!scr||scr==='screen-landing'||scr==='screen-terms'||scr==='screen-privacy'||scr==='screen-refund'||scr==='screen-about';
+    if(isEntryPoint){
+      const terms=await checkTerms();
+      if(!terms){showScreen('screen-terms');return;}
+      await tryRestoreLastReading();
+    } else if(scr==='screen-admin'&&u.email!==ADMIN_EMAIL){
+      showScreen('screen-form');
+    } else if(scr==='screen-admin'){
+      loadAdminUsers();
+    }
+  } else if(!isDemoMode){
+    CU=null;
+    if(location.pathname==='/admin') return;
+    showScreen('screen-landing');
+  }
+});
+
+// ── RESTORE LAST READING FOR REPEAT USERS ──
+async function tryRestoreLastReading(){
+  try{
+    // Find the most recent chart
+    const charts=await db.collection('users').doc(CU.uid).collection('charts')
+      .orderBy('created_at','desc').limit(1).get();
+    if(charts.empty){showScreen('screen-form');return;}
+    const chartDoc=charts.docs[0];
+    // Find the most recent reading for that chart
+    const readings=await db.collection('users').doc(CU.uid).collection('charts')
+      .doc(chartDoc.id).collection('readings')
+      .orderBy('timestamp','desc').limit(1).get();
+    if(readings.empty){showScreen('screen-form');return;}
+    const readingDoc=readings.docs[0];
+    const rdata=readingDoc.data();
+    // Only restore if reading has chart data (was fully completed)
+    if(!rdata.chart_api_response){showScreen('screen-form');return;}
+    // Safety: validate chart data has minimum required fields
+    const chartData=rdata.chart_api_response;
+    if(!chartData||typeof chartData!=='object'||!chartData.asc_sign_name){
+      console.warn('Stored chart data is incomplete, starting fresh');
+      showScreen('screen-form');return;
+    }
+    // Restore global state
+    currentChartId=chartDoc.id;
+    readingId=readingDoc.id;
+    AD=chartData;
+    currentMeta={
+      name:rdata.birth_data?.name||'',
+      q1:rdata.user_context?.profession||'',
+      q2:rdata.user_context?.past_high||'',
+      q3:rdata.user_context?.current_difficulty||''
+    };
+    // Rebuild the result screen with restored data (skip re-generating Claude text)
+    await buildResult(AD,currentMeta,true);
+    // Restore saved reading text if available, otherwise generate fresh
+    if(rdata.simple_reading){
+      simpleReadingText=rdata.simple_reading;
+      const el=document.getElementById('reading-text');
+      if(el){el.innerHTML=rdata.simple_reading.replace(/\n/g,'<br>');}
+    } else {
+      // No saved text — generate fresh
+      await streamReading(AD,currentMeta,'simple');
+    }
+  }catch(e){
+    console.warn('Could not restore last reading:',e);
+    showScreen('screen-form');
+  }
+}
+
+function getCurScreen(){for(const s of document.querySelectorAll('.screen'))if(s.classList.contains('active'))return s.id;}
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active');
+  window.scrollTo(0,0);
+  // FIX BUG2: re-init city autocomplete each time form is shown so it never freezes
+  if(id==='screen-form') setTimeout(initCityAutocomplete,100);
+}
+function goBack(){showScreen(window._prevScreen||'screen-landing');}
+
+async function signInWithGoogle(){
+  const btn=document.getElementById('btn-google-signin');
+  const origHTML=btn?btn.innerHTML:'';
+  if(btn){btn.disabled=true;btn.textContent='Signing in…';}
+  try{
+    await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    // onAuthStateChanged will take over — no need to reset button
+  }catch(e){
+    if(btn){btn.disabled=false;btn.innerHTML=origHTML;}
+    if(e.code!=='auth/popup-closed-by-user')alert('Sign-in failed. Please try again.');
+  }
+}
+function signOut(){
+  isDemoMode=false;CU=null;AD=null;
+  ['demo-badge-form','demo-badge-res'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  auth.signOut();
+}
+
+// ── TERMS ──
+async function checkTerms(){
+  try{const d=await db.collection('users').doc(CU.uid).collection('profile').doc('data').get();return d.exists&&d.data().terms_accepted;}catch(e){return false;}
+}
+async function acceptTerms(){
+  try{
+    if(!isDemoMode)await db.collection('users').doc(CU.uid).collection('profile').doc('data').set({terms_accepted:true,terms_version:'v1.0',terms_accepted_at:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+  }catch(e){console.warn('Terms save failed, continuing:',e);}
+  await tryRestoreLastReading();
+}
+
+// ── PLAN HELPERS ──
+function isPaid(plan){return['booster','rise','wise','promax'].includes(plan);}
+function isProMax(plan){return plan==='promax';}
+
+// ── PROFILE ──
+async function loadProfile(){
+  if(isDemoMode)return;
+  try{
+    const d=await db.collection('users').doc(CU.uid).collection('profile').doc('data').get();
+    if(d.exists){
+      coins=d.data().coins_balance||0;
+      sub=d.data().subscription_astro||null;
+      if(sub&&sub.plan==='promax'&&new Date(sub.expiry)<=new Date()){
+        const prevPlan=sub.previous_plan||'seeker';
+        await db.collection('users').doc(CU.uid).collection('profile').doc('data').update({'subscription_astro.plan':prevPlan,'subscription_astro.status':prevPlan==='seeker'?'expired':'active'});
+        sub.plan=prevPlan;
+      }
+      // FIX B12: load chatCnt from saved history
+      updateCoins();checkCD();updateProMaxBadge();
+    }
+  }catch(e){}
+}
+
+function updateCoins(){['form-coins','res-coins'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=coins;});}
+
+function updateProMaxBadge(){
+  const ispm=sub&&sub.plan==='promax'&&new Date(sub.expiry)>new Date();
+  ['form-promax','res-promax'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=ispm?'inline-flex':'none';});
+}
+
+function selPlan(el,p){document.querySelectorAll('.plan-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');selPlanVal=p;}
+function showCoins(){alert(`🪙 BG Coins: ${coins}\n\nEarn:\n• Refer friend who pays = +199 coins\n• 5-star rating = +5 coins\n• 40-day feedback = +25 coins\n• 1-year anniversary = +50 coins\n\nSpend:\n• 199 coins = ₹199 off any plan\nExpiry: 3 months from earning`);}
+
+// ── GET EFFECTIVE PLAN ──
+function getEffectivePlan(){
+  if(isDemoMode)return'promax';
+  if(!sub)return'seeker';
+  if(sub.plan==='promax'&&new Date(sub.expiry)>new Date())return'promax';
+  if(['booster','rise','wise'].includes(sub.plan)&&sub.status==='active'&&new Date(sub.expiry)>new Date())return sub.plan;
+  return'seeker';
+}
+
+// ── VALIDATE TIME FORMAT (FIX B7) ──
+function validateTime(tob){
+  const t24=/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+  return t24.test(tob.trim());
+}
+function parseTime24(tob){
+  const t=tob.trim();
+  if(!validateTime(t))return null;
+  const[h,m]=t.split(':').map(Number);
+  return`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:00`;
+}
+
+// ── FORM SUBMIT (FIX B3 B4 B5 B8 B9) ──
+async function submitForm(){
+  const [name,dob,tob,city,gender,q1,q2,q3]=['inp-name','inp-dob','inp-tob','inp-city','inp-gender','inp-q1','inp-q2','inp-q3'].map(id=>document.getElementById(id).value.trim());
+  const err=document.getElementById('form-err');
+  err.textContent='';
+  if(!name||!dob||!tob||!city||!gender||!q1||!q2||!q3){err.textContent='Please fill all fields.';return;}
+
+  // FIX B7: validate time format
+  const parsedTime=parseTime24(tob);
+  if(!parsedTime){err.textContent='Time must be in 24-hour format, e.g. 07:30 or 14:45';return;}
+
+  // Rate limit — skip for promax and paid plans
+  const effective=getEffectivePlan();
+  if(effective==='seeker'&&await hitLimit()){err.textContent='2 free readings used today. Return tomorrow or upgrade.';return;}
+
+  document.getElementById('btn-submit').disabled=true;
+  document.getElementById('form-err').textContent=''; // FIX B4
+
+  // FIX B3: check payment BEFORE creating chart
+  const needsPayment=selPlanVal!=='seeker'&&!await hasActiveSub(selPlanVal);
+  if(needsPayment){
+    await openRazorpay(selPlanVal,{name,dob,tob:parsedTime,city,gender,q1,q2,q3});
+    document.getElementById('btn-submit').disabled=false; // FIX B4: re-enable on pre-payment
+    return;
+  }
+
+  showScreen('screen-loading');
+  chatHist=[];chatCnt=0;simpleReadingText='';currentMode='simple';
+
+  try{
+    // FIX B9: do NOT set coins_balance here (use FieldValue.increment in giveCoins)
+    await db.collection('users').doc(CU.uid).collection('profile').doc('data').set({
+      name,email:CU.email,gender,dob,tob,city,
+      last_active:firebase.firestore.FieldValue.serverTimestamp()
+    },{merge:true});
+
+    const cr=await db.collection('users').doc(CU.uid).collection('charts').add({
+      name,dob,tob,city,gender,label:'Me',relation:'self',
+      created_at:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    currentChartId=cr.id;
+
+    const rr=await db.collection('users').doc(CU.uid).collection('charts').doc(cr.id).collection('readings').add({
+      birth_data:{name,dob,tob,city,gender},
+      user_context:{profession:q1,past_high:q2,current_difficulty:q3},
+      subscription_tier:effective,language:'en',
+      timestamp:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    readingId=rr.id;
+    await giveWelcomeCoins();
+  }catch(e){console.warn(e);}
+
+  await runAnalysis({name,dob,tob:parsedTime,city,gender,q1,q2,q3});
+}
+
+async function runAnalysis({name,dob,tob,city,gender,q1,q2,q3}){
+  currentMeta={name,q1,q2,q3};
+  try{
+    setLoader('Casting your chart…','Resolving coordinates & Julian Day');
+    const today=new Date().toISOString().split('T')[0];
+    const r=await fetch('https://bgbaba.onrender.com/analysis',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,date_of_birth:dob,time_of_birth:tob,city,gender,current_date:today})
+    });
+    const j=await r.json();
+    if(j.status!=='success'){
+      const msg=j.message||j.error||j.detail||JSON.stringify(j);
+      if(msg.toLowerCase().includes('city')||msg.toLowerCase().includes('location')||msg.toLowerCase().includes('not found'))
+        throw new Error('City not found. Try just the city name e.g. "Mumbai", "Delhi".');
+      throw new Error('Engine error: '+msg);
+    }
+    AD=j.data;
+    // Count only after confirmed success — failed requests don't consume quota
+    await updCount();
+    // Save chart data to Firestore so repeat users can restore their reading
+    if(readingId&&currentChartId&&!isDemoMode){
+      try{
+        await db.collection('users').doc(CU.uid).collection('charts').doc(currentChartId)
+          .collection('readings').doc(readingId).set({chart_api_response:AD},{merge:true});
+      }catch(e){console.warn('Could not save chart data:',e);}
+    }
+    setLoader('Your guide is meditating…','Synthesising yogas, dashas & remedies');
+    await buildResult(AD,{name,q1,q2,q3});
+  }catch(e){
+    console.error(e);showScreen('screen-form');
+    const msg=e.message||'Something went wrong. Please try again.';
+    document.getElementById('form-err').textContent=msg;
+    document.getElementById('btn-submit').disabled=false;
+  }
+}
+
+function setLoader(t,s){document.getElementById('loading-title').textContent=t;document.getElementById('loading-sub').textContent=s;}
+
+// ── BUILD RESULT ──
+async function buildResult(d,meta,skipStream=false){
+  const signs=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+  const ps=p=>signs[d.chart?.[p]?.sign]||'—';
+  const ph=p=>d.chart?.[p]?.d1_house||'—';
+  const pn=p=>d.chart?.[p]?.nakshatra||'—';
+  const effective=getEffectivePlan();
+  const paid=isPaid(effective);
+  const remIcons={gemstone:'💎',naam_jaap:'🕉️',daan:'🙏',rudraksha:'📿',yantra:'🔯',seva:'❤️',vastu_boosters:'🌟',vastu_balancers:'⚖️'};
+
+  // Engine returns remedies.simple (naam_jaap + daan) and remedies.advanced (gemstone, rudraksha, yantra, seva, vastu)
+  const remSimple  = d.remedies?.simple   || {};
+  const remAdv     = d.remedies?.advanced || {};
+
+  function fmtRemedy(k, v){
+    if(!v) return '';
+    if(Array.isArray(v)){
+      if(!v.length) return '';
+      const first = v[0];
+      if(typeof first === 'object'){
+        const parts = [];
+        if(first.planet)      parts.push(first.planet);
+        if(first.stone)       parts.push(first.stone);
+        if(first.beej)        parts.push(first.beej);
+        if(first.items)       parts.push(first.items.split(',')[0].trim());
+        if(first.mukhi)       parts.push(first.mukhi);
+        if(first.yantra_name) parts.push(first.yantra_name);
+        if(first.serve)       parts.push(first.serve.substring(0,40)+'…');
+        if(first.zone)        parts.push(first.zone);
+        return parts.slice(0,2).join(' — ') || '';
+      }
+      return v.join(', ');
+    }
+    if(typeof v === 'object') return Object.values(v).filter(x=>typeof x==='string').slice(0,2).join(' · ');
+    return String(v);
+  }
+
+  function remCards(obj){
+    let html='';
+    for(const[k,v] of Object.entries(obj)){
+      if(!v||(Array.isArray(v)&&!v.length)) continue;
+      const disp=fmtRemedy(k,v);
+      if(!disp) continue;
+      html+=`<div class="rem-card"><div class="rem-icon">${remIcons[k]||'✦'}</div><div class="rem-type">${k.replace(/_/g,' ')}</div><div class="rem-val">${disp}</div></div>`;
+    }
+    return html;
+  }
+
+  const simpleRemHTML  = remCards(remSimple);
+  const advancedRemHTML = paid ? remCards(remAdv) : '';
+  const advancedLocked = !paid ? `
+    <div class="paywall-wrap" style="margin-top:12px">
+      <div class="remedy-grid paywall-blur">
+        <div class="rem-card"><div class="rem-icon">💎</div><div class="rem-type">Gemstone</div><div class="rem-val">Your primary stone…</div></div>
+        <div class="rem-card"><div class="rem-icon">📿</div><div class="rem-type">Rudraksha</div><div class="rem-val">Timeline alignment…</div></div>
+        <div class="rem-card"><div class="rem-icon">🔯</div><div class="rem-type">Yantra</div><div class="rem-val">Activation zone…</div></div>
+        <div class="rem-card"><div class="rem-icon">❤️</div><div class="rem-type">Seva</div><div class="rem-val">Service practice…</div></div>
+        <div class="rem-card"><div class="rem-icon">🌟</div><div class="rem-type">Vastu Booster</div><div class="rem-val">Power zone…</div></div>
+        <div class="rem-card"><div class="rem-icon">⚖️</div><div class="rem-type">Vastu Balancer</div><div class="rem-val">Clearing zone…</div></div>
+      </div>
+      <div class="paywall-overlay">
+        <div class="paywall-title">Advanced Remedies</div>
+        <div class="paywall-sub">Gemstone · Rudraksha · Yantra · Seva · Vastu — Booster plan and above</div>
+        <button class="btn-primary" style="max-width:220px" onclick="openRazorpay('booster',null)">Unlock — ₹199</button>
+      </div>
+    </div>` : '';
+
+  const remHTML = (simpleRemHTML || advancedRemHTML || advancedLocked) ? `
+    <div class="a-card" style="margin:20px 0">
+      <div class="a-title">✦ Remedies</div>
+      ${simpleRemHTML ? `<div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:8px">Daily Practice</div><div class="remedy-grid">${simpleRemHTML}</div>` : ''}
+      ${paid && advancedRemHTML ? `<div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin:16px 0 8px">Advanced Remedies</div><div class="remedy-grid">${advancedRemHTML}</div>` : ''}
+      ${advancedLocked}
+    </div>` : '';
+
+  const planLabel={'seeker':'Seeker','booster':'Booster','rise':'Rise','wise':'Wise','promax':'⚡ Pro Max'}[effective]||'Seeker';
+  // FIX B15: cap scores at 100
+  const ws=Math.min(Math.round(d.wealth_score||0),100);
+  const fs=Math.min(Math.round(d.fortune_score||0),100);
+
+  try{document.getElementById('result-content').innerHTML=`
+    <div class="result-header">
+      <div class="result-name">${meta.name}</div>
+      <div class="result-asc">${d.asc_sign_name} Ascendant · ${d.asc_nakshatra} Pada ${d.asc_pada}</div>
+      <div style="font-size:0.65rem;color:var(--muted);margin-top:6px;letter-spacing:0.1em">${planLabel} Plan</div>
+    </div>
+    <div class="scores">
+      <div class="score-card"><div class="score-val">${ws}</div><div class="score-lbl">Labh Score</div><div class="score-bar"><div class="score-fill" id="sf-w"></div></div></div>
+      <div class="score-card"><div class="score-val">${fs}</div><div class="score-lbl">Bhagya Score</div><div class="score-bar"><div class="score-fill" id="sf-f"></div></div></div>
+      <div class="score-card"><div class="score-val">${d.yoga_count||0}</div><div class="score-lbl">Yogas Found</div><div class="score-bar"><div class="score-fill" id="sf-y"></div></div></div>
+    </div>
+    <div class="dasha-block">
+      <div class="dasha-label">✦ Current Dasha Period</div>
+      <div class="dasha-main">${d.dasha_lord} Mahadasha</div>
+      <div class="dasha-dates">${d.dasha_start_date} → ${d.dasha_end_date}</div>
+      <div style="margin-top:10px">
+        <div class="dasha-main" style="font-size:1.1rem">${d.dasha_lord}–${d.antardasha_lord} Antardasha</div>
+        <div class="dasha-dates">${d.antardasha_start_date} → ${d.antardasha_end_date}</div>
+      </div>
+    </div>
+    <div class="analysis-grid">
+      <div class="a-card">
+        <div class="a-title">Planet Positions</div>
+        ${['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','Rahu','Ketu'].map(p=>`<div class="p-row"><span class="pname">${p}</span><span class="pval">${ps(p)} H${ph(p)} · ${pn(p)}</span></div>`).join('')}
+      </div>
+      <div class="a-card">
+        <div class="a-title">Key Indicators</div>
+        <div class="p-row"><span class="pname">Lagna Lord</span><span class="pval">${d.lagna_lord||'—'}</span></div>
+        <div class="p-row"><span class="pname">Atmakaraka</span><span class="pval">${d.karakas?.AK||'—'}</span></div>
+        <div class="p-row"><span class="pname">Yogi Planet</span><span class="pval">${d.yogi_planet||'—'}</span></div>
+        <div class="p-row"><span class="pname">Avayogi</span><span class="pval">${d.avayogi_planet||'—'}</span></div>
+        <div class="p-row"><span class="pname">Badhakesh</span><span class="pval">${d.badhakesh||'—'}</span></div>
+        <div class="p-row"><span class="pname">KP Sub Lord</span><span class="pval">${d.kp_sub_lord||'—'}</span></div>
+        <div class="p-row"><span class="pname">Moon Nak</span><span class="pval">${d.moon_nak||'—'}</span></div>
+        <div class="p-row"><span class="pname">Darakaraka</span><span class="pval">${d.karakas?.DK||'—'}</span></div>
+      </div>
+    </div>
+    <!-- FIX B6: mode toggle with proper state management -->
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="mb-simple" onclick="switchMode('simple')">Simple</button>
+      <button class="mode-btn" id="mb-tech" onclick="switchMode('technical')">Technical</button>
+    </div>
+    <!-- FIX B6: single reading-output div, never show both simultaneously -->
+    <div id="reading-output"><div class="reading-block" id="reading-text"><span class="cursor"></span></div></div>
+    <div class="action-row">
+      ${paid?`<button class="btn-action" onclick="dlPDF()">📄 PDF</button><button class="btn-action" onclick="toggleTTS()">🔊 <span id="tts-lbl">Read Aloud</span></button>`:`<span style="font-size:0.75rem;color:var(--muted)">📄 PDF &amp; 🔊 Audio available on Booster plan and above</span>`}
+    </div>
+    ${remHTML}
+    <div class="chat-section">
+      <div class="chat-header">
+        <div class="chat-title">✦ Ask Your Angel Guide</div>
+        <div class="chat-subtitle">Your personal cosmic guide is ready to answer questions about your chart, life path, business timing, and more.</div>
+      </div>
+      <div class="chat-messages" id="chat-msgs"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-in" placeholder="Ask anything about your chart..." onkeypress="if(event.key==='Enter')sendChat()">
+        <button class="btn-send" onclick="sendChat()">Send</button>
+      </div>
+      <div class="notice" id="chat-notice">${paid?'Unlimited questions on your plan':'3 free questions remaining'}</div>
+    </div>
+    <div class="a-card" style="margin:24px 0;text-align:center">
+      <div class="a-title" style="text-align:left">Was this reading accurate?</div>
+      <div style="font-size:1.8rem;cursor:pointer;letter-spacing:4px">${[1,2,3,4,5].map(i=>`<span onclick="rateIt(${i})" id="star-${i}" style="opacity:0.25;transition:0.2s">★</span>`).join('')}</div>
+    </div>
+    ${!paid?`<div class="upgrade-banner">
+      <div class="upgrade-title">Unlock Your Full Blueprint</div>
+      <div class="upgrade-sub">All yogas, complete remedies, vastu, technical mode, PDF, unlimited chat — 24 hours.</div>
+      <button class="btn-primary" style="max-width:260px;margin:0 auto" onclick="openRazorpay('booster',null)">✦ Boost Now — ₹199</button>
+    </div>`:''
+    }
+    <div class="a-card" style="margin:20px 0">
+      <div class="a-title">✦ Earn BG Coins — Refer a Friend</div>
+      <div style="font-size:0.85rem;color:var(--muted);margin-bottom:12px">Friend buys any paid plan = you earn 199 BG Coins (₹199 value). Coins expire in 3 months.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <input id="ref-link" value="Loading..." style="flex:1;font-size:0.78rem" readonly>
+        <button class="btn-outline" onclick="copyRef()">Copy</button>
+        <button class="btn-outline" onclick="waShare()">WhatsApp</button>
+      </div>
+    </div>
+  `;}catch(renderErr){
+    console.warn('Result render error:',renderErr);
+    showScreen('screen-form');
+    return;
+  }
+
+  showScreen('screen-result');
+  setTimeout(()=>{
+    const w=document.getElementById('sf-w');if(w)w.style.width=ws+'%';
+    const f=document.getElementById('sf-f');if(f)f.style.width=fs+'%';
+    const y=document.getElementById('sf-y');if(y)y.style.width=Math.min((d.yoga_count||0)/87*100,100)+'%';
+  },200);
+  if(!isDemoMode)genRefLink();
+  currentMode='simple';
+  if(!skipStream)await streamReading(d,meta,'simple');
+}
+
+// ── STREAM READING (FIX B5: clean prompt, no raw JSON leak) ──
+async function streamReading(d,meta,mode){
+  const el=document.getElementById('reading-text');
+  if(!el)return;
+  el.innerHTML='<span class="cursor"></span>';
+  const effective=getEffectivePlan();
+  const prompt=buildPrompt(d,meta,mode,effective);
+  try{
+    if(isDemoMode){
+      // Demo mode: use pre-loaded text
+      el.innerHTML=(simpleReadingText||'Demo reading loaded. See the sample analysis above.').replace(/\n/g,'<br>');
+      return;
+    }
+    const res=await fetch('/api/read',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,tier:effective})});
+    if(!res.ok)throw new Error();
+    const reader=res.body.getReader();const dec=new TextDecoder();let txt='';
+    while(true){
+      const{done,value}=await reader.read();if(done)break;
+      for(const line of dec.decode(value).split('\n')){
+        if(line.startsWith('data: ')){
+          const data=line.slice(6);if(data==='[DONE]')break;
+          try{txt+=(JSON.parse(data).delta?.text||'');el.innerHTML=txt.replace(/\n/g,'<br>')+'<span class="cursor"></span>';}catch(e){}
+        }
+      }
+    }
+    el.innerHTML=txt.replace(/\n/g,'<br>');
+    // FIX B10/B11: save simple reading text separately
+    if(mode==='simple')simpleReadingText=txt;
+    if(readingId&&currentChartId){
+      try{await db.collection('users').doc(CU.uid).collection('charts').doc(currentChartId).collection('readings').doc(readingId).set({simple_reading:txt},{merge:true});}catch(e){}
+    }
+  }catch(e){
+    try{
+      const r2=await fetch('/api/read',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,tier:effective,stream:false})});
+      const j=await r2.json();const t=j.text||'Reading unavailable. Please refresh.';
+      el.innerHTML=t.replace(/\n/g,'<br>');
+      if(mode==='simple')simpleReadingText=t;
+    }catch(e2){el.innerHTML='Your cosmic blueprint has been computed. Please refresh.';}
+  }
+}
+
+// FIX B5: buildPrompt — flatten ctx to clean key:value strings, no nested JSON
+function buildPrompt(d,meta,mode,tier){
+  const tiers={
+    seeker:`TIER: SEEKER (Free — Launch Generous Mode)\nWrite a warm, meaningful reading of about 250-300 words:\n1. Cosmic Identity: 2 sentences about ASC + Moon nakshatra energy\n2. Current Phase: 2 sentences on Mahadasha + Antardasha meaning\n3. Two Strengths: specific strengths from yogas or planet positions\n4. One Growth Edge: honest challenge with a constructive angle\n5. Two Simple Remedies: Naam Jaap + one practical action\n6. Warm closing blessing tied to their chart\nEnd with a gentle 1-line invitation to go deeper with Booster plan.`,
+    booster:`TIER: BOOSTER (24hr) — Full reading, 350-400 words. Cover all sections: identity, both scores, 4 strengths, 3 growth edges, full dasha + antardasha meaning, all remedies.`,
+    rise:`TIER: RISE (Monthly) — Rich full reading, 500 words. All sections with depth, warmth and specific guidance. Include vastu and karaka insights.`,
+    wise:`TIER: WISE (Annual) — Deep, rich reading, 600 words. All sections with maximum depth, specific predictions and actionable guidance. Include technical references.`,
+    promax:`TIER: PRO MAX — Comprehensive reading, 700 words. Complete analysis with maximum detail, specific dates and predictions, all remedies, karaka insights, and technical references. This is VIP access.`
+  };
+
+  // FIX B5: flatten to readable strings, not raw JSON objects
+  const topYogas=(d.yogas_present||[]).slice(0,10).join(', ');
+  const ctx=`Name: ${meta.name}
+Ascendant: ${d.asc_sign_name} ${d.asc_nakshatra} Pada ${d.asc_pada}
+Moon Nakshatra: ${d.moon_nak}
+Lagna Lord: ${d.lagna_lord}
+Yogi Planet: ${d.yogi_planet}
+Avayogi: ${d.avayogi_planet}
+Badhakesh: ${d.badhakesh}
+Atmakaraka: ${d.karakas?.AK||'—'}
+Darakaraka: ${d.karakas?.DK||'—'}
+Labh Score: ${d.wealth_score}
+Bhagya Score: ${d.fortune_score}
+Yoga Count: ${d.yoga_count}
+Mahadasha: ${d.dasha_lord} (${d.dasha_start_date} to ${d.dasha_end_date})
+Antardasha: ${d.antardasha_lord} (${d.antardasha_start_date} to ${d.antardasha_end_date})
+Top Yogas: ${topYogas}
+Gemstone: ${d.remedies?.gemstone?.stone||d.remedies?.gemstone?.planet||'—'}
+Naam Jaap: ${d.naam_jaap||'—'}`;
+
+  const techCtx=mode==='technical'?`\n\nTECHNICAL MODE — Include: complete D1 planet positions by house and nakshatra, Shadbala observations, KP sub-lord significations, all detected yogas with strength assessment, Jaimini karaka analysis, and signal guide (Yogi/Avayogi/Badhakesh implications).`:'';
+
+  return`You are BG Baba — Bhagya Booster by BG. A warm, insightful Vedic astrology guide created by Basesh Gala, business mentor and spiritual guide.
+
+${tiers[tier]||tiers.seeker}${techCtx}
+
+User: ${meta.name}
+Profession: ${meta.q1}
+Life's biggest high: ${meta.q2}
+Current challenge: ${meta.q3}
+
+Chart data:
+${ctx}
+
+Write warm, personalised paragraphs. Chart always leads. Never fabricate. No markdown, no asterisks, no JSON. Clear flowing English. Address the person by name.`;
+}
+
+// ── MODE SWITCH (FIX B6: single output, never both at once) ──
+async function switchMode(m){
+  if(m===currentMode)return; // FIX B6: no re-render if already on this mode
+  currentMode=m;
+  document.getElementById('mb-simple').classList.toggle('active',m==='simple');
+  document.getElementById('mb-tech').classList.toggle('active',m==='technical');
+  const effective=getEffectivePlan();
+  const paid=isPaid(effective);
+  // Replace reading-output content entirely — never both at once
+  if(m==='technical'&&!paid){
+    document.getElementById('reading-output').innerHTML=`<div class="paywall-wrap"><div class="reading-block paywall-blur">Technical mode includes complete D1+D9 birth chart table with all flags, Shadbala strength analysis, all ${AD?.yoga_count||20} yogas detected with strength ratings, full KP signification layers, Jaimini karaka insights, and the complete signal guide with Yogi, Avayogi, Badhakesh and Neecha Bhanga analysis...</div><div class="paywall-overlay"><div class="paywall-title">Technical Mode</div><div class="paywall-sub">Full technical analysis — Booster plan and above</div><button class="btn-primary" style="max-width:220px" onclick="openRazorpay('booster',null)">Boost Now — ₹199</button></div></div>`;
+    return;
+  }
+  if(AD){
+    const meta=currentMeta||{name:AD.name||'',q1:'',q2:'',q3:''};
+    document.getElementById('reading-output').innerHTML=`<div class="reading-block" id="reading-text"><span class="cursor"></span></div>`;
+    await streamReading(AD,meta,m);
+  }
+}
+
+// ── CHAT ──
+async function sendChat(){
+  const inp=document.getElementById('chat-in');const q=inp?.value?.trim();if(!q)return;
+  const effective=getEffectivePlan();
+  const paid=isPaid(effective);
+  if(!paid&&chatCnt>=3){
+    document.getElementById('chat-msgs').innerHTML+=`<div class="chat-limit">3 free questions used. <button class="btn-outline" onclick="openRazorpay('booster',null)" style="margin-left:8px">Boost Now ₹199</button></div>`;
+    return;
+  }
+  inp.value='';chatCnt++;
+  const msgs=document.getElementById('chat-msgs');
+  msgs.innerHTML+=`<div class="chat-msg user">${q}</div><div class="chat-msg ai" id="cai-${chatCnt}">thinking...</div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  chatHist.push({role:'user',content:q});
+
+  // FIX B5: flatten chart context for chat too
+  const ctx=`Ascendant: ${AD?.asc_sign_name} ${AD?.asc_nakshatra}, Moon Nakshatra: ${AD?.moon_nak}, Lagna Lord: ${AD?.lagna_lord}, Yogi: ${AD?.yogi_planet}, Avayogi: ${AD?.avayogi_planet}, Badhakesh: ${AD?.badhakesh}, AK: ${AD?.karakas?.AK}, Labh Score: ${AD?.wealth_score}, Bhagya Score: ${AD?.fortune_score}, Mahadasha: ${AD?.dasha_lord} until ${AD?.dasha_end_date}, Antardasha: ${AD?.antardasha_lord}, Top Yogas: ${(AD?.yogas_present||[]).slice(0,10).join(', ')}`;
+
+  try{
+    if(isDemoMode){
+      document.getElementById(`cai-${chatCnt}`).textContent='This is a demo response. In the live version, BG Baba would answer your specific question about the chart with detailed Vedic insights. Thank you for reviewing Bhagya Booster!';
+      chatHist.push({role:'assistant',content:'Demo response'});
+      const n=document.getElementById('chat-notice');if(n&&!paid)n.textContent=`${3-chatCnt} free questions remaining`;
+      msgs.scrollTop=msgs.scrollHeight;return;
+    }
+    const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:`You are BG Baba. Answer questions about this person's Vedic chart using ONLY the data provided. Keep answers warm, precise, practical. Never fabricate. Data: ${ctx}`,messages:chatHist})});
+    const j=await r.json();const ans=j.text||'Please try again.';
+    document.getElementById(`cai-${chatCnt}`).textContent=ans;
+    chatHist.push({role:'assistant',content:ans});
+    const n=document.getElementById('chat-notice');if(n&&!paid)n.textContent=`${3-chatCnt} free questions remaining`;
+    if(readingId&&currentChartId){
+      try{await db.collection('users').doc(CU.uid).collection('charts').doc(currentChartId).collection('readings').doc(readingId).set({chat_history:firebase.firestore.FieldValue.arrayUnion({q,a:ans,timestamp:Date.now()})},{merge:true});}catch(e){}
+    }
+  }catch(e){document.getElementById(`cai-${chatCnt}`).textContent='Something went wrong. Please try again.';}
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+// ── RATING ──
+async function rateIt(s){
+  for(let i=1;i<=5;i++){const el=document.getElementById(`star-${i}`);if(el){el.style.opacity=i<=s?'1':'0.2';el.style.color=i<=s?'var(--saffron)':'';}}
+  if(s===5&&!isDemoMode)await giveCoins(5,'rating');
+  if(readingId&&currentChartId&&!isDemoMode){
+    try{await db.collection('users').doc(CU.uid).collection('charts').doc(currentChartId).collection('readings').doc(readingId).set({overall_rating:s},{merge:true});}catch(e){}
+  }
+}
+
+// ── COINS (FIX B9: always use FieldValue.increment) ──
+async function giveCoins(amt,reason){
+  coins+=amt;updateCoins();
+  if(isDemoMode)return;
+  try{
+    await db.collection('users').doc(CU.uid).collection('profile').doc('data').update({
+      coins_balance:firebase.firestore.FieldValue.increment(amt),
+      coins_lifetime_earned:firebase.firestore.FieldValue.increment(amt)
+    });
+    await db.collection('users').doc(CU.uid).collection('coins_ledger').add({type:'earned',amount:amt,reason,expiry:new Date(Date.now()+90*24*60*60*1000).toISOString(),created_at:firebase.firestore.FieldValue.serverTimestamp()});
+  }catch(e){}
+}
+
+async function giveWelcomeCoins(){
+  if(isDemoMode)return;
+  try{
+    const d=await db.collection('users').doc(CU.uid).collection('profile').doc('data').get();
+    if(d.exists&&!d.data().welcome_coins){await giveCoins(10,'welcome');await db.collection('users').doc(CU.uid).collection('profile').doc('data').update({welcome_coins:true});}
+  }catch(e){}
+}
+
+// ── REFERRAL (FIX B14: null check on CU) ──
+async function genRefLink(){
+  if(!CU||isDemoMode)return;
+  try{
+    const d=await db.collection('users').doc(CU.uid).collection('profile').doc('data').get();
+    let rc=d.exists&&d.data().ref_code;
+    if(!rc){rc=CU.uid.slice(-8);await db.collection('users').doc(CU.uid).collection('profile').doc('data').update({ref_code:rc});}
+    const link=`${location.origin}?ref=${rc}`;const el=document.getElementById('ref-link');if(el)el.value=link;
+  }catch(e){}
+}
+function copyRef(){const el=document.getElementById('ref-link');if(el){navigator.clipboard.writeText(el.value);alert('Referral link copied! Share to earn 199 BG Coins.');}}
+function waShare(){const el=document.getElementById('ref-link');if(el)window.open(`https://wa.me/?text=${encodeURIComponent('✨ Boost your Labh & Bhagya with Vedic astrology! Free reading: '+el.value)}`,'_blank');}
+
+// ── LIMITS (FIX B8: use Firestore transaction) ──
+async function hitLimit(){
+  if(isDemoMode)return false;
+  // Admin never hits rate limit
+  if(CU&&CU.email===ADMIN_EMAIL)return false;
+  try{
+    const today=new Date().toDateString();
+    const ref=db.collection('users').doc(CU.uid).collection('profile').doc('data');
+    const d=await ref.get();
+    if(!d.exists)return false;
+    const data=d.data();
+    return data.last_reading_date===today&&(data.daily_readings||0)>=2;
+  }catch(e){return false;}
+}
+async function updCount(){
+  if(isDemoMode)return;
+  try{
+    const today=new Date().toDateString();
+    const ref=db.collection('users').doc(CU.uid).collection('profile').doc('data');
+    await db.runTransaction(async t=>{
+      const d=await t.get(ref);
+      const data=d.exists?d.data():{};
+      const cnt=data.last_reading_date===today?(data.daily_readings||0)+1:1;
+      t.set(ref,{last_reading_date:today,daily_readings:cnt},{merge:true});
+    });
+  }catch(e){}
+}
+async function hasActiveSub(plan){
+  if(isDemoMode)return true;
+  try{
+    const d=await db.collection('users').doc(CU.uid).collection('profile').doc('data').get();
+    if(!d.exists)return false;
+    const s=d.data().subscription_astro;
+    if(!s)return false;
+    if(s.plan==='promax'&&new Date(s.expiry)>new Date())return true;
+    if(['wise','rise','booster'].includes(s.plan)&&s.status==='active'&&new Date(s.expiry)>new Date())return true;
+    return false;
+  }catch(e){return false;}
+}
+
+// ── COUNTDOWN ──
+function checkCD(){
+  if(!sub)return;
+  const isBooster=sub.plan==='booster';
+  if(!isBooster)return;
+  const exp=new Date(sub.expiry);if(exp<=new Date())return;
+  ['form-cd','res-cd'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='inline-flex';});
+  if(cdTimer)clearInterval(cdTimer);
+  cdTimer=setInterval(()=>{
+    const diff=exp-new Date();if(diff<=0){clearInterval(cdTimer);return;}
+    const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    const t=`⏱ ${h}h ${m}m ${s}s`;
+    ['form-cd','res-cd'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t;});
+  },1000);
+}
+
+// ── RAZORPAY (FIX B4: clear form-err on dismiss) ──
+async function openRazorpay(plan,fd){
+  if(isDemoMode){alert('Payment disabled in demo mode.');return;}
+  const amounts={booster:19900,rise:49900,wise:199900};
+  const names={booster:'Booster 24hr',rise:'Rise Monthly',wise:'Wise Annual'};
+  const rzp=new Razorpay({
+    key:window.RAZORPAY_KEY,amount:amounts[plan],currency:'INR',
+    name:'Bhagya Booster by BG',description:names[plan],
+    prefill:{name:CU.displayName||'',email:CU.email||''},
+    theme:{color:'#f4801a'},
+    handler:async function(resp){
+      try{
+        await fetch('/api/pay',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({payment_id:resp.razorpay_payment_id,plan,uid:CU.uid,email:CU.email})});
+        selPlanVal=plan;await loadProfile();
+        if(fd)await runAnalysis(fd);else location.reload();
+      }catch(e){alert('Payment recorded. Please refresh if features not unlocked.');}
+    },
+    modal:{ondismiss:()=>{
+      document.getElementById('btn-submit').disabled=false; // FIX B4
+      document.getElementById('form-err').textContent=''; // FIX B4
+      showScreen('screen-form');
+    }}
+  });
+  rzp.open();
+}
+
+// ── PDF (FIX B10: use simpleReadingText not DOM) ──
+async function dlPDF(){
+  if(isDemoMode){alert('PDF download disabled in demo mode.');return;}
+  if(!AD){alert('No reading data.');return;}
+  const{jsPDF}=window.jspdf;const doc=new jsPDF();
+  const bg=(d,r,g,b)=>{d.setFillColor(r,g,b);d.rect(0,0,210,297,'F');};
+  bg(doc,15,15,46);doc.setTextColor(244,128,26);doc.setFontSize(26);doc.text('Bhagya Booster by BG',105,70,{align:'center'});
+  doc.setFontSize(11);doc.setTextColor(136,136,187);doc.text('Boost Labh & Bhagya through Gyaan & Karma',105,82,{align:'center'});
+  doc.setTextColor(253,246,227);doc.setFontSize(20);doc.text(AD.name,105,105,{align:'center'});
+  doc.setFontSize(10);doc.setTextColor(136,136,187);doc.text(`${AD.dob} · ${AD.tob} · ${AD.city}`,105,118,{align:'center'});
+  doc.text(`Reading Date: ${new Date().toLocaleDateString('en-IN')}`,105,128,{align:'center'});
+  doc.setFontSize(8);doc.setTextColor(244,128,26);doc.text('BaseshUGala.com — Powered by 39Solutions LLP',105,278,{align:'center'});
+  doc.addPage();bg(doc,15,15,46);doc.setTextColor(244,128,26);doc.setFontSize(14);doc.text('Cosmic Identity',20,30);
+  doc.setTextColor(253,246,227);doc.setFontSize(10);
+  doc.text(`ASC: ${AD.asc_sign_name} · ${AD.asc_nakshatra} Pada ${AD.asc_pada}`,20,45);
+  doc.text(`Labh Score: ${Math.round(AD.wealth_score)}   Bhagya Score: ${Math.round(AD.fortune_score)}   Yogas: ${AD.yoga_count}`,20,55);
+  doc.text(`Lagna Lord: ${AD.lagna_lord}   AK: ${AD.karakas?.AK||'—'}   Yogi: ${AD.yogi_planet}`,20,65);
+  doc.text(`Mahadasha: ${AD.dasha_lord} (${AD.dasha_start_date} → ${AD.dasha_end_date})`,20,75);
+  doc.addPage();bg(doc,15,15,46);doc.setTextColor(244,128,26);doc.setFontSize(14);doc.text('Your Reading',20,30);
+  // FIX B10: use stored simpleReadingText not DOM content
+  const txt=simpleReadingText||'Reading not available.';
+  doc.setTextColor(253,246,227);doc.setFontSize(9);
+  doc.text(doc.splitTextToSize(txt,170).slice(0,55),20,45);
+  doc.addPage();bg(doc,15,15,46);doc.setTextColor(136,136,187);doc.setFontSize(9);
+  doc.text('DISCLAIMER',20,20);
+  doc.text(doc.splitTextToSize('All payments are final. No refunds once a reading has been generated. This reading is for guidance only. Astrology is a beautiful art and science — neither humans nor AI can be 100% accurate. For serious life decisions please consult qualified professionals. BaseshUGala.com, Basesh Gala, and BG Baba are explicitly indemnified from any decisions made based on this reading. We never sell your data. Powered by 39Solutions LLP.',170),20,30);
+  doc.setTextColor(244,128,26);doc.text('© 2026 Bhagya Booster by BG — BaseshUGala.com',20,280);
+  doc.save(`BhagyaBooster_${AD.name.replace(/\s/g,'_')}.pdf`);
+}
+
+// ── TTS (FIX B11: use simpleReadingText not DOM) ──
+let ttsOn=false;
+function toggleTTS(){
+  const lbl=document.getElementById('tts-lbl');if(!lbl)return;
+  if(ttsOn){speechSynthesis.cancel();ttsOn=false;lbl.textContent='Read Aloud';return;}
+  // FIX B11: always read from stored simple text
+  const txt=simpleReadingText||'';
+  if(!txt){alert('No reading text available.');return;}
+  const u=new SpeechSynthesisUtterance(txt);u.lang='en-IN';u.rate=0.9;
+  u.onend=()=>{ttsOn=false;if(lbl)lbl.textContent='Read Aloud';};
+  speechSynthesis.speak(u);ttsOn=true;lbl.textContent='Stop Audio';
+}
+
+// FIX B13: reset selPlanVal in goNew
+function goNew(){
+  AD=null;chatHist=[];chatCnt=0;simpleReadingText='';currentMode='simple';
+  selPlanVal='seeker';
+  document.querySelectorAll('.plan-opt').forEach(x=>x.classList.remove('sel'));
+  const sk=document.querySelector('.plan-opt[data-plan="seeker"]');if(sk)sk.classList.add('sel');
+  document.getElementById('btn-submit').disabled=false;
+  showScreen('screen-form');
+}
+
+// ── ADMIN ──
+async function loadAdminUsers(){
+  if(!CU||CU.email!==ADMIN_EMAIL){showScreen('screen-form');return;}
+  document.getElementById('admin-table-wrap').innerHTML='<div style="color:var(--muted);font-size:0.85rem;text-align:center;padding:40px">Loading...</div>';
+  try{
+    const idToken=await CU.getIdToken(true);
+    const r=await fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'get_users',idToken})});
+    const j=await r.json();
+    if(!j.users)throw new Error(j.error||'Failed to load users');
+    allAdminUsers=j.users;
+    const total=allAdminUsers.length;
+    const paid=allAdminUsers.filter(u=>u.subscription_astro&&['booster','rise','wise','promax'].includes(u.subscription_astro.plan)).length;
+    const promax=allAdminUsers.filter(u=>u.subscription_astro?.plan==='promax').length;
+    const totalCoins=allAdminUsers.reduce((s,u)=>s+(u.coins_balance||0),0);
+    document.getElementById('admin-stats').innerHTML=`
+      <div class="score-card"><div class="score-val" style="font-size:2rem">${total}</div><div class="score-lbl">Total Users</div></div>
+      <div class="score-card"><div class="score-val" style="font-size:2rem">${paid}</div><div class="score-lbl">Paid Users</div></div>
+      <div class="score-card"><div class="score-val" style="font-size:2rem">${promax}</div><div class="score-lbl">Pro Max Active</div></div>
+      <div class="score-card"><div class="score-val" style="font-size:2rem">${totalCoins}</div><div class="score-lbl">Coins Issued</div></div>
+    `;
+    renderAdminTable(allAdminUsers);
+  }catch(e){document.getElementById('admin-table-wrap').innerHTML=`<div class="err">Error loading users: ${e.message}</div>`;}
+}
+
+function renderAdminTable(users){
+  if(!users.length){document.getElementById('admin-table-wrap').innerHTML='<div style="color:var(--muted);text-align:center;padding:40px">No users found</div>';return;}
+  const planPill=p=>{const map={seeker:'Seeker',booster:'Booster',rise:'Rise',wise:'Wise',promax:'⚡ Pro Max'};return`<span class="plan-pill ${p||'seeker'}">${map[p]||'Seeker'}</span>`;};
+  document.getElementById('admin-table-wrap').innerHTML=`
+    <table class="admin-table">
+      <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Coins</th><th>Last Active</th><th>Actions</th></tr></thead>
+      <tbody>
+        ${users.map(u=>`
+          <tr>
+            <td>${u.name||'—'}</td>
+            <td style="font-size:0.75rem">${u.email||'—'}</td>
+            <td>${planPill(u.subscription_astro?.plan)}</td>
+            <td>🪙 ${u.coins_balance||0}</td>
+            <td style="font-size:0.72rem;color:var(--muted)">${u.last_active?.toDate?u.last_active.toDate().toLocaleDateString('en-IN'):'—'}</td>
+            <td><button class="btn-outline" style="padding:4px 12px;font-size:0.68rem" onclick="openProMaxModal('${u.uid}','${u.email}','${u.subscription_astro?.plan||'seeker'}')">⚡ Pro Max</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function filterAdminUsers(){
+  const q=document.getElementById('admin-search').value.toLowerCase();
+  renderAdminTable(allAdminUsers.filter(u=>(u.email||'').toLowerCase().includes(q)||(u.name||'').toLowerCase().includes(q)));
+}
+
+let pmTargetUid=null,pmPrevPlan=null;
+function openProMaxModal(uid,email,currentPlan){
+  pmTargetUid=uid;pmPrevPlan=currentPlan;
+  document.getElementById('pm-user-email').value=email;
+  document.getElementById('pm-hours').value=72;
+  document.getElementById('pm-note').value='';
+  const m=document.getElementById('promax-modal');m.style.display='flex';
+}
+function closeProMaxModal(){document.getElementById('promax-modal').style.display='none';}
+
+async function grantProMax(){
+  if(!pmTargetUid)return;
+  const hours=parseInt(document.getElementById('pm-hours').value)||72;
+  const note=document.getElementById('pm-note').value;
+  try{
+    const idToken=await CU.getIdToken(true);
+    const r=await fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'grant_promax',idToken,targetUid:pmTargetUid,hours,note,previousPlan:pmPrevPlan||'seeker'})});
+    const j=await r.json();
+    if(!j.success)throw new Error(j.error);
+    closeProMaxModal();
+    alert(`⚡ Pro Max granted for ${hours} hours! Expires: ${new Date(j.expiry).toLocaleString('en-IN')}`);
+    loadAdminUsers();
+  }catch(e){alert('Error granting Pro Max: '+e.message);}
+}
+
+// ── COMING SOON modal ──
+function comingSoon(feature){
+  alert(`${feature} — Coming Soon!\n\nWe're building this feature. Stay tuned! 🙏`);
+}
+
+// ── GOOGLE PLACES AUTOCOMPLETE ──
+// Called either as Google Maps callback (on script load) or manually when form shown
+let _cityAC=null;
+function initCityAutocomplete(){
+  const input=document.getElementById('inp-city');
+  if(!input)return;
+  // Always allow re-editing: remove any frozen state
+  input.removeAttribute('readonly');
+  input.style.pointerEvents='';
+  input.style.color='';
+  delete input.dataset.validated;
+  if(typeof google!=='undefined'&&google.maps&&google.maps.places){
+    // Unbind old instance if present (prevents duplicate listeners)
+    if(_cityAC){
+      google.maps.event.clearInstanceListeners(_cityAC);
+      _cityAC=null;
+    }
+    _cityAC=new google.maps.places.Autocomplete(input,{
+      types:['(cities)'],
+      fields:['formatted_address','name','geometry']
+    });
+    _cityAC.addListener('place_changed',()=>{
+      const place=_cityAC.getPlace();
+      if(place){
+        // Use just the city name — engine GeoNames needs plain city, not full address
+        const cityName=place.name||place.formatted_address.split(',')[0].trim();
+        document.getElementById('inp-city').value=cityName;
+        document.getElementById('inp-city').dataset.validated='true';
+      }
+    });
+    // Re-enable editing if user clears the field
+    input.addEventListener('input',()=>{
+      if(input.value.length<3) delete input.dataset.validated;
+    },{passive:true});
+  }
+  // Fallback: plain text input works fine without Google Places
+}
+// Init after page load
+setTimeout(initCityAutocomplete,1000);
+
+// ── LOAD CREATOR PHOTO ──
+const creatorBg=document.getElementById('creator-bg');
+if(creatorBg) creatorBg.style.backgroundImage="url('https://cdn.jsdelivr.net/gh/baseshgala/baseshugala@main/BG.png')";
+
+// Set about photo — force fresh load with cache-bust if needed
+function loadAboutPhoto(){
+  const el=document.getElementById('about-photo');
+  if(!el||el.tagName!=='IMG')return;
+  const url='https://cdn.jsdelivr.net/gh/baseshgala/baseshugala@main/BG.png';
+  // If already loaded fine, skip
+  if(el.complete&&el.naturalWidth>0)return;
+  // Force browser to retry (previous onerror may have cleared src)
+  const img=new Image();
+  img.onload=()=>{el.src=url;el.classList.remove('about-photo-missing');};
+  img.onerror=()=>{el.classList.add('about-photo-missing');};
+  img.src=url+'?v='+Date.now();
+}
+loadAboutPhoto();
+
+</script>
+</body>
+</html>
