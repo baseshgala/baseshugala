@@ -5,23 +5,16 @@ export default async function handler(req) {
     return new Response('Method not allowed', { status: 405 });
   }
   try {
-    const { prompt, tier, stream = true } = await req.json();
+    const { prompt, tier } = await req.json();
 
-    // Tokens = output only. Prompt itself is ~400 tokens, add headroom.
+    // Non-streaming — complete text in one response, no chunk corruption
     const maxTokens = {
-      'seeker':  1200,  // ~350 word reading (prompt ~400 + output ~800)
-      'booster': 1800,  // ~550 word reading
-      'rise':    2400,  // ~750 word reading
-      'wise':    3000,  // ~950 word reading
-      'promax':  4000   // ~1250 word reading — full VIP
-    }[tier] || 1200;
-
-    const body = {
-      model: 'claude-sonnet-4-5',
-      max_tokens: maxTokens,
-      stream: stream,
-      messages: [{ role: 'user', content: prompt }]
-    };
+      'seeker':  1500,
+      'booster': 2500,
+      'rise':    3500,
+      'wise':    4500,
+      'promax':  6000
+    }[tier] || 1500;
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -30,7 +23,12 @@ export default async function handler(req) {
         'x-api-key': process.env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01'
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-5',
+        max_tokens: maxTokens,
+        stream: false,
+        messages: [{ role: 'user', content: prompt }]
+      })
     });
 
     if (!res.ok) {
@@ -41,51 +39,10 @@ export default async function handler(req) {
       });
     }
 
-    if (!stream) {
-      const json = await res.json();
-      const text = json.content?.[0]?.text || '';
-      return new Response(JSON.stringify({ text }), {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
-    }
-
-    // Stream response
-    const encoder = new TextEncoder();
-    const readable = new ReadableStream({
-      async start(controller) {
-        const reader = res.body.getReader();
-        const decoder = new TextDecoder();
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) { controller.close(); break; }
-          const chunk = decoder.decode(value);
-          for (const line of chunk.split('\n')) {
-            if (line.startsWith('data: ')) {
-              const data = line.slice(6);
-              if (data === '[DONE]') {
-                controller.enqueue(encoder.encode('data: [DONE]\n\n'));
-                break;
-              }
-              try {
-                const json = JSON.parse(data);
-                if (json.type === 'content_block_delta') {
-                  controller.enqueue(encoder.encode(
-                    `data: ${JSON.stringify({ delta: { text: json.delta?.text || '' } })}\n\n`
-                  ));
-                }
-              } catch (e) {}
-            }
-          }
-        }
-      }
-    });
-
-    return new Response(readable, {
-      headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Access-Control-Allow-Origin': '*'
-      }
+    const json = await res.json();
+    const text = json.content?.[0]?.text || '';
+    return new Response(JSON.stringify({ text }), {
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
     });
 
   } catch (e) {
