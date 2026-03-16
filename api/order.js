@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         amount,
         currency: 'INR',
-        receipt: `bgbaba_${uid}_${plan}_${Date.now()}`,
+        receipt: `bg_${uid.slice(-8)}_${plan.slice(0,3)}_${Date.now().toString().slice(-8)}`,
         notes: { plan, uid }
       })
     });
