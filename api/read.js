@@ -1,6 +1,6 @@
 // Switch to nodejs runtime — 60s timeout vs edge 10s
 // Required for non-streaming Claude API calls which take 15-30s
-export const config = { runtime: 'nodejs', maxDuration: 60 };
+export const config = { runtime: 'nodejs', maxDuration: 90 };
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -13,12 +13,12 @@ export default async function handler(req, res) {
 
     // Non-streaming — complete text in one response, no chunk corruption
     const maxTokens = {
-      'seeker':  1500,
-      'booster': 2500,
-      'rise':    3500,
-      'wise':    4500,
-      'promax':  6000
-    }[tier] || 1500;
+      'seeker':  1000,
+      'booster': 1500,
+      'rise':    2000,
+      'wise':    2000,
+      'promax':  2500
+    }[tier] || 1000;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
