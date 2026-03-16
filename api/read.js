@@ -7,14 +7,14 @@ export default async function handler(req) {
   try {
     const { prompt, tier, stream = true } = await req.json();
 
-    // Tokens = prompt (~300) + reading output. These are OUTPUT-only limits.
+    // Tokens = output only. Prompt itself is ~400 tokens, add headroom.
     const maxTokens = {
-      'seeker':  800,   // ~250 word reading
-      'booster': 1200,  // ~400 word reading
-      'rise':    1800,  // ~600 word reading
-      'wise':    2200,  // ~700 word reading
-      'promax':  2800   // ~900 word reading
-    }[tier] || 800;
+      'seeker':  1200,  // ~350 word reading (prompt ~400 + output ~800)
+      'booster': 1800,  // ~550 word reading
+      'rise':    2400,  // ~750 word reading
+      'wise':    3000,  // ~950 word reading
+      'promax':  4000   // ~1250 word reading — full VIP
+    }[tier] || 1200;
 
     const body = {
       model: 'claude-sonnet-4-5',
